@@ -1,6 +1,6 @@
 ## This is a personal config for PMM. You can edit this file to your needs and be sure to fill in your personal keys 
 ## Overlays included for Movies in 4K, 1080p. Collections include IMDB, IMAX, DV, MCU, STar Wars. Star Trek, Harry Potter
-## Overlays included for TV Shows  in 4K. Collections inlude IMDB, Main Streaming Platforms and Major Networkds.
+## Overlays included for TV Shows in 4K. Collections inlude IMDB, Main Streaming Platforms and Major Networks.
 ##### Check your LIBRARY names in plex and copy them to the library names below. If your LIBRARY names are anything other than "Movies" and "TV Shows", change the names to match
 ##### ie. change the "Movies" to your movie library name and change "TV Shows" to your tv library name
 ## Fill in your plex IP under Settings Category along with plex token
