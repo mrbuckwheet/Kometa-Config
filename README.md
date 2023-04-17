@@ -1,5 +1,5 @@
 # Plex-Meta-Manager-Config
-Extract into your Plex Meta Manager Config folder
+Extract entire directory into your Plex Meta Manager Config folder
 
 Movie Collection Preview
 ![Movie Collection](https://user-images.githubusercontent.com/124317277/232326609-c407d4f2-5fbb-4189-b0e8-13d5456f5eb2.JPG)
