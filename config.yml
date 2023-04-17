@@ -28,7 +28,7 @@ libraries:                       # This is called out once within the config.yml
           imdb_list_mcu: https://www.imdb.com/list/ls029032797/
           summary_mcu: "MCU Chronological Order"
           visible_home_mcu: true  #This will shows the MCU on your Home screen in Plex
-    - file: config/Movie Collections.yml
+    - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
     overlay_path:
     #- reset_overlays: plex      # reset overlays to plex or tmdb
@@ -311,22 +311,22 @@ settings:
   check_nightly: false
   show_unconfigured: true
   playlist_exclude_users:
-webhooks:                        # This is a webhook for notifiarr. if not needed you can add # infront of each line. 
-  error: notifiarr
-  version: notifiarr
-  run_start: notifiarr
-  run_end: notifiarr
-  changes: notifiarr
-  delete: notifiarr
+#webhooks:                        # This is a webhook for notifiarr.  
+  #error: notifiarr
+  #version: notifiarr
+  #run_start: notifiarr
+  #run_end: notifiarr
+  #changes: notifiarr
+  #delete: notifiarr
 plex:                            # Can be individually specified per library as well; REQUIRED for the script to run
-  url: http://(your IP Addresss for plex):32400    #fill in your IP address here ex 192.168.1.2 or 127.0.0.2 or whatever ip you use to access plex locally. 
+  url: http://192.168.1.1:32400    #fill in your IP address here ex 192.168.1.2 or 127.0.0.2 or whatever ip you use to access plex locally. 
   token: xxxxxxxxxxxxxxxxxxxxxxxxxx
   timeout: 60
   clean_bundles: true
   empty_trash: true
   optimize: false
-notifiarr:
-  apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
+#notifiarr:
+  #apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
 tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
   language: en
