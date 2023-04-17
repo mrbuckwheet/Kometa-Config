@@ -1,19 +1,22 @@
+##These collection are created as if you were using the advanced search field in Plex. Below are filters for Imax and 4k Dolby Vision Movies.
+##You can add or remove filters baised on your own preferences. 
+
 collections:
-      4K Dolby Vision:
+      4K Dolby Vision: #fiters only movies with 4K and Dolby Vision and places them in a collection 
         plex_all: true
         filters: 
             has_dolby_vision: true
             resolution: 4k
-        sort_title: "!021_+4K Dolby Vision"
-        collection_order: title.asc
+        sort_title: "!021_+4K Dolby Vision" #This places the collection in a specific order vs other collections based on the PMM collection section order 
+        collection_order: title.asc 
         url_poster: https://theposterdb.com/api/assets/226933
-      IMAX:
+      IMAX:              #filters only movies with the edition tag IMAX, Imax-E, Extended IMAX
         plex_search:
           any: 
             edition: 
               - Imax
               - Extended Imax
               - Imax-E
-        sort_title: "!021_+IMAX"
+        sort_title: "!021_+IMAX"         #This places the collection in a specific order vs other collections based on the PMM collection section order
         collection_order: title.asc
         url_poster: https://theposterdb.com/api/assets/224736
