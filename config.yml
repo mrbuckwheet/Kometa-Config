@@ -81,39 +81,17 @@ libraries:                       # This is called out once within the config.yml
       template_variables:
           visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
           visible_home_popular: true    #run once to create list in home settings
-    - pmm: streaming  # This will create collections for the following Streaming Services. Check the Network Collections to avoide duplicates like HBO, Amazon, NBC/Peacock etc
-      template_variables:
-          use_separator: false
-          sep_style: stb
-          exclude:      #Streaming platforms are shown below - anything with a # infront is excluded. To include them add the # infront
-            - all4
-            #- appletv
-            - bet
-            - britbox
-            - crave
-            - crunchyroll
-            #- discovery
-            #- disney
-            - hayu
-            #- hbomax
-            #- hulu
-            #- netflix
-            - now
-            #- paramount
-            #- peacock
-            #- amazon
-            #-showtime
-          sort_by: title.asc
     - pmm: network  # This will create collections for the following Networks. Check the Streaming list above to avoid duplicates like  Amazon, Netflix, NBC/Peacock etc
       template_variables:
           use_separator: false
+          sync_mode: append
           sep_style: stb
-          include:   #Networks are shown below - anything with a # infront is excluded. To include them remove the #
+          #name_format: <<key_name>> Shows
+          include:  #Remove # infront of lines below to add network to Collections
             - A&E
             - ABC
-            #- Amazon
             - AMC
-            #- Animal Planet
+            - Animal Planet
             #- BBC
             #- BET
             #- Cartoon Network
@@ -136,10 +114,11 @@ libraries:                       # This is called out once within the config.yml
             #- Lifetime
             #- MTV
             #- National Geographic
-            #- NBC
+            - NBC
             - Nickelodeon
+            #- Paramount Network
             #- PBS
-            #- Showtime
+            - Showtime
             #- Sky
             - Starz
             #- The CW
@@ -148,9 +127,26 @@ libraries:                       # This is called out once within the config.yml
             #- UKTV
             - USA
             #- YouTube
-          sort_by: title.asc
-    
-                                
+            ####STREAMING NETWORKS####
+            - Apple TV+
+            - Amazon
+            - discovery+
+            - Disney+
+            - HBO Max
+            - Hulu
+            - Netflix
+            - Paramount+
+            - Peacock
+            - Starz
+          addons:  #these addons bundle additional network Collections under a main collection . ex. the show "Yellowstone" is catatgorized under Paramount Network not Paramount+. this will bundle the Paramount Network collection under Paramount+ to avoid duplicates or collection with only one show. 
+            Paramount+:     #main network
+              - Paramount Network      #network you want bundle under the Paramoun+ collection
+            Peacock:        
+              - NBC
+            HBO Max:  #fixes all the HBO MAX vs HBO vs HBO+ collection issues. just 1 HBO Collection
+              - HBO
+          sort_by: title.asc  
+                                       
     overlay_path:
     #- reset_overlays: plex      #reset overlays to plex or tmdb
     - remove_overlays: false     # Set this to true to remove all overlays
