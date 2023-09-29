@@ -328,7 +328,20 @@ tmdb:                            # REQUIRED for the script to run you need to cr
   language: en
   cache_expiration: 60
   region:
+trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account 
+  client_id: ####################
+  client_secret: ####################
+  pin:
+  authorization:
+    # everything below is autofilled by the script
+    access_token:
+    token_type:
+    expires_in:
+    refresh_token:
+    scope: public
+    created_at:
 mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. 
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx              
   cache_expiration: 60
+
   
