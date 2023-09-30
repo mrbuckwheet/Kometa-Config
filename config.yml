@@ -40,7 +40,6 @@ libraries:                       # This is called out once within the config.yml
         - askew   #View Askewniverse
         #- wizard #Wizarding World
         - xmen    #X-Men Universe
-        #name_mapping_mcu2: MCU Chronological Order
         visible_home_mcu2: true  #This will show a collection on home screen in Plex, this case its Marvel Cronological Order
     - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
