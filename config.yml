@@ -19,15 +19,29 @@ libraries:                       # This is called out once within the config.yml
           visible_home_popular: true    #run once to create list in home settings
     - pmm: universe
       template_variables:
-          use_separator: false
-          include:
-            - mcu       #Marvel Cinematic Universe
-            - trek      #Star Trek
-            - star      #Star wars
-            - wizard    #Harry Potter
-          imdb_list_mcu: https://www.imdb.com/list/ls029032797/
-          summary_mcu: "MCU Chronological Order"
-          visible_home_mcu: true  #This will shows the MCU on your Home screen in Plex
+        use_separator: false
+        append_data:     # this adds custom lists imdb, trakt, or mdb
+          mcu2: Marvel Chronological Order   # name of custom collection
+        imdb_list_mcu2: https://www.imdb.com/list/ls029032797/   # link to list
+        url_poster_mcu2: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager-Images/master/universe/mcu.jpg # poster url (Wanted MCU but custom order, still use default assests from PMM) 
+        exclude:
+        - avp     #Alien / Predator
+        - arrow   #Arrowverse
+        - dca     #DC Animated Universe
+        - dcu     #DC Extended Universe
+        - fast    #Fast & Furious
+        - marvel  #In Association With Marvel
+        - mcu     #Marvel Cinematic Universe
+        - middle  #Middle Earth
+        - mummy   #The Mummy Universe
+        - rocky   #Rocky / Creed
+        #- trek   #Star Trek
+        #- star   #Star Wars Universe
+        - askew   #View Askewniverse
+        #- wizard #Wizarding World
+        - xmen    #X-Men Universe
+        #name_mapping_mcu2: MCU Chronological Order
+        visible_home_mcu2: true  #This will show a collection on home screen in Plex, this case its Marvel Cronological Order
     - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
     overlay_path:
