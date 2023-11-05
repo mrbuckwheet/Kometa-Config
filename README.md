@@ -9,3 +9,7 @@ Movie Overlay Preview
 
 TV Overlay Preview
 ![TV Overlay Preview](https://user-images.githubusercontent.com/124317277/232326617-b5c4f59d-5491-4830-8ea5-d6874d4b1c06.JPG)
+
+<!-- markdownlint-disable MD033 -->
+<a href="https://www.buymeacoffee.com/mrbuckwheet" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-black.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+<!-- markdownlint-enable MD033 -->
