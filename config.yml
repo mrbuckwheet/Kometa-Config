@@ -94,13 +94,13 @@ libraries:                       # This is called out once within the config.yml
       template_variables:
           visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
           visible_home_popular: true    #run once to create list in home settings
-    - pmm: network  # This will create collections for the following Networks. Check the Streaming list above to avoid duplicates like  Amazon, Netflix, NBC/Peacock etc
+    - pmm: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have PMM streaming running also (Amazon, Netflix, Peacock etc)
       template_variables:
           use_separator: false
           sync_mode: append
           sep_style: stb
           #name_format: <<key_name>> Shows
-          include:  #Remove # infront of lines below to add network to Collections
+          include:  ##Remove "#" infront of lines below to add network to Collections
             - A&E
             - ABC
             - AMC
@@ -140,25 +140,58 @@ libraries:                       # This is called out once within the config.yml
             #- UKTV
             - USA
             #- YouTube
-            ####STREAMING NETWORKS####
-            - Apple TV+
-            - Amazon
-            - discovery+
-            - Disney+
-            - HBO Max
-            - Hulu
-            - Netflix
-            - Paramount+
-            - Peacock
-            - Starz
-          addons:  #these addons bundle additional network Collections under a main collection . ex. the show "Yellowstone" is catatgorized under Paramount Network not Paramount+. this will bundle the Paramount Network collection under Paramount+ to avoid duplicates or collection with only one show. 
+            ####STREAMING NETWORKS#### This has moved to the PMM Streaming section (do not enable if you have "-PMM Streaming" On since this PMM config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
+            #- Apple TV+
+            #- Amazon
+            #- discovery+
+            #- Disney+
+            #- HBO Max
+            #- Hulu
+            #- Netflix
+            #- Paramount+
+            #- Peacock          
+          addons:  #these addons bundle additional network Collections under a main collection. 
             Paramount+:     #main network
-              - Paramount Network      #network you want bundle under the Paramoun+ collection
+              - Paramount Network      #network you want bundle under the "Paramoun+" collection
             Peacock:        
               - NBC
-            HBO Max:  #fixes all the HBO MAX vs HBO vs HBO+ collection issues. just 1 HBO Collection
+            HBO Max:  
               - HBO
-          sort_by: title.asc  
+          sort_by: title.asc
+    - pmm: streaming # This will create collections for the following streaming services. 
+      template_variables:
+          #collection_section: "050"  #this setting will bundle the streaming collections with "-pmm networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"  
+          use_separator: false
+          sep_style: stb
+          sync_mode: append
+          #visible_library_disney: true #enable if you want a specific streaming service to appear in your library tab.
+          #visible_home_disney: true    #enable if you want a specific streaming service to appear in your home tab.
+          #visible_shared_disney: true  #enable if you want a specific streaming service to appear in your friends home tab.
+          #sonarr_add_missing_hulu: true #adds all missing shows to sonarr. BE CAREFUL AS SOME SERVICES HAVE OVER 1000 SHOWS
+          name_format: <<key_name>>  #renames the collections for each streaming service to keep the title format for all collections the same. "Apple TV+ Shows" is renamed to "Apple TV+"  
+          #originals_only: true  #only show the streaming service's original content 
+          exclude:
+            #- appletv
+            - bet
+            - britbox
+            - crave
+            - crunchyroll
+            #- discovery
+            #- disney
+            - hayu
+            #- max
+            #- hulu
+            #- netflix
+            - now
+            #- paramount
+            #- peacock
+            #- amazon
+            - showtime
+          sort_by: title.asc 
+          #####################
+          #####################
+          #IF YOUR COLLECTIONS HAVE DUPLICATES OR IF YOU HAVE RUN ANY OF MY PREVIOUS CONGIFS USE THE OPERATIONS SETTING TO DELETE ALL MANAGED COLLECTIONS AND START FRESH 
+          
                                        
     overlay_path:
     #- reset_overlays: plex      #reset overlays to plex or tmdb
@@ -273,6 +306,10 @@ libraries:                       # This is called out once within the config.yml
         #horizontal_position: right
         #overlay_level: episode
     operations:
+      #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
+        #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" PMM ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
+        #managed: true
+        
       #mass_poster_update: plex                       #resets posters to tmdb or plex
       mass_user_rating_update: mdb_imdb                  #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
       mass_critic_rating_update: mdb_tomatoes            #  This operation will update the critic rating in plex with rotten tomatoes ratings information
