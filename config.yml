@@ -10,7 +10,7 @@
 libraries:                       # This is called out once within the config.yml file
   Movies:  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/Movies_report.yml 
-    metadata_path:
+    collection_files:
     - pmm: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
     - pmm: imdb                  # Creates IMDB Collections for Popular and Top 250
       template_variables:
@@ -43,7 +43,7 @@ libraries:                       # This is called out once within the config.yml
         visible_home_mcu2: true  #This will show a collection on home screen in Plex, this case its Marvel Cronological Order
     - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
-    overlay_path:
+    overlay_files:
     #- reset_overlays: plex      # reset overlays to plex or tmdb
     - remove_overlays: false     # Set this to true to remove all overlays
     - pmm: ribbon
@@ -88,7 +88,7 @@ libraries:                       # This is called out once within the config.yml
 
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
     report_path: config/missing/TV_report.yml
-    metadata_path:
+    collection_files:
     - pmm: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
     - pmm: imdb                  # Creates IMDB Collections for Popular and Top 250 
       template_variables:
@@ -193,7 +193,7 @@ libraries:                       # This is called out once within the config.yml
           #IF YOUR COLLECTIONS HAVE DUPLICATES OR IF YOU HAVE RUN ANY OF MY PREVIOUS CONGIFS USE THE OPERATIONS SETTING TO DELETE ALL MANAGED COLLECTIONS AND START FRESH 
           
                                        
-    overlay_path:
+    overlay_files:
     #- reset_overlays: plex      #reset overlays to plex or tmdb
     - remove_overlays: false     # Set this to true to remove all overlays
     - pmm: ribbon
