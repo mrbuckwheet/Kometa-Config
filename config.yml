@@ -14,6 +14,7 @@ libraries:                       # This is called out once within the config.yml
     - pmm: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
     - pmm: imdb                  # Creates IMDB Collections for Popular and Top 250
       template_variables:
+          name_popular: IMDb Popular Movies    #Option to rename the default "IMDb Popular" to a custom name
           use_lowest: false
           visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
           visible_home_popular: true    #run once to create list in home settings
@@ -92,8 +93,9 @@ libraries:                       # This is called out once within the config.yml
     - pmm: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
     - pmm: imdb                  # Creates IMDB Collections for Popular and Top 250 
       template_variables:
-          visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-          visible_home_popular: true    #run once to create list in home settings
+        name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
+        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+        visible_home_popular: true    #run once to create list in home settings
     - pmm: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have PMM streaming running also (Amazon, Netflix, Peacock etc)
       template_variables:
           use_separator: false
