@@ -207,14 +207,14 @@ libraries:                       # This is called out once within the config.yml
           use_480p: false
     - pmm: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
       template_variables:
-          overlay_level: season
+          builder_level: season
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
     - pmm: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
       template_variables:
-          overlay_level: episode
+          builder_level: episode
           use_1080p: false
           use_720p: false
           use_576p: false
@@ -255,7 +255,7 @@ libraries:                       # This is called out once within the config.yml
           horizontal_align: left 
           vertical_align: bottom 
           style: standard 
-          overlay_level: season
+          builder_level: season
     - pmm: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
       template_variables:
           use_dtsx: false
@@ -274,7 +274,7 @@ libraries:                       # This is called out once within the config.yml
           horizontal_align: left 
           vertical_align: bottom 
           style: standard 
-          overlay_level: episode
+          builder_level: episode
     - pmm: ratings         # Ratings overlays for TV Shows with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format.
       template_variables:
         rating1: critic
@@ -306,7 +306,7 @@ libraries:                       # This is called out once within the config.yml
         #rating2_font_size: 70
 
         #horizontal_position: right
-        #overlay_level: episode
+        #builder_level: episode
     operations:
       #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
         #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" PMM ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
@@ -359,6 +359,11 @@ settings:
   check_nightly: false
   show_unconfigured: true
   playlist_exclude_users:
+  run_order:                     # recommened run order keep operations first
+  - operations
+  - metadata
+  - collections
+  - overlays
 #webhooks:                        # This is a webhook for notifiarr.  
   #error: notifiarr
   #version: notifiarr
