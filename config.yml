@@ -172,23 +172,23 @@ libraries:                       # This is called out once within the config.yml
           #sonarr_add_missing_hulu: true #adds all missing shows to sonarr. BE CAREFUL AS SOME SERVICES HAVE OVER 1000 SHOWS
           name_format: <<key_name>>  #renames the collections for each streaming service to keep the title format for all collections the same. "Apple TV+ Shows" is renamed to "Apple TV+"  
           #originals_only: true  #only show the streaming service's original content 
-          exclude:
-            #- appletv
-            - bet
-            - britbox
-            - crave
-            - crunchyroll
-            #- discovery
-            #- disney
-            - hayu
-            #- max
-            #- hulu
-            #- netflix
-            - now
-            #- paramount
-            #- peacock
-            #- amazon
-            - showtime
+          include:
+            - appletv
+            #- bet
+            #- britbox
+            #- crave
+            #- crunchyroll
+            - discovery
+            - disney
+            #- hayu
+            - max
+            - hulu
+            - netflix
+            #- now
+            - paramount
+            - peacock
+            - amazon
+            #- showtime
           sort_by: title.asc 
           #####################
           #####################
@@ -324,12 +324,12 @@ settings:
   cache_expiration: 60
   asset_directory: config/assets
   missing_path: config/missing
-  asset_folders: false
+  asset_folders: true
   asset_depth: 0
-  create_asset_folders: false
-  prioritize_assets: false
+  create_asset_folders: true
+  prioritize_assets: true
   dimensional_asset_rename: false
-  download_url_assets: false
+  download_url_assets: true
   show_missing_season_assets: false
   show_missing_episode_assets: false
   show_asset_not_needed: false
@@ -377,15 +377,17 @@ plex:                            # Can be individually specified per library as 
   timeout: 60
   clean_bundles: true
   empty_trash: true
-  optimize: false
+  optimize: true
+  db_cache: 1024
+  verify_ssl: 
 #notifiarr:
   #apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
-tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com
+tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com https://metamanager.wiki/en/latest/config/tmdb/
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
   language: en
   cache_expiration: 60
   region:
-trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account 
+trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account https://metamanager.wiki/en/latest/config/trakt/
   client_id: ####################
   client_secret: ####################
   pin:
@@ -397,7 +399,7 @@ trakt:                           # Some collections (Star Trek) will pull from t
     refresh_token:
     scope: public
     created_at:
-mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. 
+mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. https://metamanager.wiki/en/latest/config/mdblist/
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx              
   cache_expiration: 60
 
