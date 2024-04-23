@@ -11,45 +11,45 @@ libraries:                       # This is called out once within the config.yml
   Movies:  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/Movies_report.yml 
     collection_files:
-    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - default: imdb                  # Creates IMDB Collections for Popular and Top 250
-      template_variables:
+      - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+      - default: imdb                  # Creates IMDB Collections for Popular and Top 250
+        template_variables:
           name_popular: IMDb Popular Movies    #Option to rename the default "IMDb Popular" to a custom name
           use_lowest: false
           visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
           visible_home_popular: true    #run once to create list in home settings
-    - default: universe
-      template_variables:
-        use_separator: false
-        append_data:     # this adds custom lists imdb, trakt, or mdb
-          mcu2: Marvel Chronological Order   # name of custom collection
-        imdb_list_mcu2: https://www.imdb.com/list/ls029032797/   # link to list
-        url_poster_mcu2: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager-Images/master/universe/mcu.jpg # poster url (Wanted MCU but custom order, still use default assests from Kometa) 
-        exclude:
-        - avp     #Alien / Predator
-        - arrow   #Arrowverse
-        - dca     #DC Animated Universe
-        - dcu     #DC Extended Universe
-        - fast    #Fast & Furious
-        - marvel  #In Association With Marvel
-        - mcu     #Marvel Cinematic Universe
-        - middle  #Middle Earth
-        - mummy   #The Mummy Universe
-        - rocky   #Rocky / Creed
-        #- trek   #Star Trek
-        #- star   #Star Wars Universe
-        - askew   #View Askewniverse
-        #- wizard #Wizarding World
-        - xmen    #X-Men Universe
-        visible_home_mcu2: true  #This will show a collection on home screen in Plex, this case its Marvel Cronological Order
-    - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
+      - default: universe
+        template_variables:
+          use_separator: false
+          append_data:     # this adds custom lists imdb, trakt, or mdb
+            mcu2: Marvel Chronological Order   # name of custom collection
+          imdb_list_mcu2: https://www.imdb.com/list/ls029032797/   # link to list
+          url_poster_mcu2: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager-Images/master/universe/mcu.jpg # poster url (Wanted MCU but custom order, still use default assests from Kometa) 
+          exclude:
+          - avp     #Alien / Predator
+          - arrow   #Arrowverse
+          - dca     #DC Animated Universe
+          - dcu     #DC Extended Universe
+          - fast    #Fast & Furious
+          - marvel  #In Association With Marvel
+          - mcu     #Marvel Cinematic Universe
+          - middle  #Middle Earth
+          - mummy   #The Mummy Universe
+          - rocky   #Rocky / Creed
+          #- trek   #Star Trek
+          #- star   #Star Wars Universe
+          - askew   #View Askewniverse
+          #- wizard #Wizarding World
+          - xmen    #X-Men Universe
+          visible_home_mcu2: true  #This will show a collection on home screen in Plex, this case its Marvel Cronological Order
+      - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
     overlay_files:
-    #- reset_overlays: plex      # reset overlays to plex or tmdb
-    - remove_overlays: false     # Set this to true to remove all overlays
-    - default: ribbon
-    - default: audio_codec
-      template_variables:
+      #- reset_overlays: plex      # reset overlays to plex or tmdb
+      - remove_overlays: false     # Set this to true to remove all overlays
+      - default: ribbon
+      - default: audio_codec
+        template_variables:
           use_pcm: false
           use_flac: false
           use_opus: false
@@ -58,29 +58,29 @@ libraries:                       # This is called out once within the config.yml
           horizontal_align: left 
           vertical_align: bottom 
           style: standard 
-    - default: resolution
-      template_variables:
+      - default: resolution
+        template_variables:
           use_720p: false
           use_576p: false
           use_480p: false
-    - default: ratings                                  # Ratings with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format
-      template_variables:
-        rating1: critic
-        rating1_image: rt_tomato
-        rating1_font: config/overlays/fonts/Adlib.ttf
-        rating1_font_size: 63
+      - default: ratings                                  # Ratings with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format
+        template_variables:
+          rating1: critic
+          rating1_image: rt_tomato
+          rating1_font: config/overlays/fonts/Adlib.ttf
+          rating1_font_size: 63
 
-        rating2: user
-        rating2_image: imdb
-        rating2_font: config/overlays/fonts/Impact.ttf
-        rating2_font_size: 70
+          rating2: user
+          rating2_image: imdb
+          rating2_font: config/overlays/fonts/Impact.ttf
+          rating2_font_size: 70
 
-        rating3: audience
-        rating3_image: tmdb
-        rating3_font: config/overlays/fonts/Avenir_95_Black.ttf
-        rating3_font_size: 70
+          rating3: audience
+          rating3_image: tmdb
+          rating3_font: config/overlays/fonts/Avenir_95_Black.ttf
+          rating3_font_size: 70
 
-        horizontal_position: right
+          horizontal_position: right
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
       mass_user_rating_update: mdb_imdb           #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
@@ -90,14 +90,14 @@ libraries:                       # This is called out once within the config.yml
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
     report_path: config/missing/TV_report.yml
     collection_files:
-    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - default: imdb                  # Creates IMDB Collections for Popular and Top 250 
-      template_variables:
-        name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
-        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-        visible_home_popular: true    #run once to create list in home settings
-    - default: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
-      template_variables:
+      - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+      - default: imdb                  # Creates IMDB Collections for Popular and Top 250 
+        template_variables:
+          name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
+          visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+          visible_home_popular: true    #run once to create list in home settings
+      - default: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
+        template_variables:
           use_separator: false
           sync_mode: append
           sep_style: stb
@@ -160,8 +160,8 @@ libraries:                       # This is called out once within the config.yml
             HBO Max:  
               - HBO
           sort_by: title.asc
-    - default: streaming # This will create collections for the following streaming services. 
-      template_variables:
+      - default: streaming # This will create collections for the following streaming services. 
+        template_variables:
           #collection_section: "050"  #this setting will bundle the streaming collections with "-default: networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"  
           use_separator: false
           sep_style: stb
@@ -196,31 +196,31 @@ libraries:                       # This is called out once within the config.yml
           
                                        
     overlay_files:
-    #- reset_overlays: plex      #reset overlays to plex or tmdb
-    - remove_overlays: false     # Set this to true to remove all overlays
-    - default: ribbon
-    - default: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
-      template_variables:
+      #- reset_overlays: plex      #reset overlays to plex or tmdb
+      - remove_overlays: false     # Set this to true to remove all overlays
+      - default: ribbon
+      - default: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
+        template_variables:
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
-    - default: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
+      - default: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
+        template_variables:
           builder_level: season
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
-    - default: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
+      - default: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
+        template_variables:
           builder_level: episode
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
-    - default: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on. I recommend these setting to avoid too much clutter. 
-      template_variables:
+      - default: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on. I recommend these setting to avoid too much clutter. 
+        template_variables:
           use_dtsx: false
           use_plus_atmos: false
           use_ma: false
@@ -237,8 +237,8 @@ libraries:                       # This is called out once within the config.yml
           horizontal_align: left 
           vertical_align: bottom 
           style: standard 
-    - default: audio_codec # Audio codec overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
+      - default: audio_codec # Audio codec overlays at season level, Set the value to "true" if you want these formats on
+        template_variables:
           use_dtsx: false
           use_plus_atmos: false
           use_ma: false
@@ -256,8 +256,8 @@ libraries:                       # This is called out once within the config.yml
           vertical_align: bottom 
           style: standard 
           builder_level: season
-    - default: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
+      - default: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
+        template_variables:
           use_dtsx: false
           use_plus_atmos: false
           use_ma: false
@@ -275,38 +275,38 @@ libraries:                       # This is called out once within the config.yml
           vertical_align: bottom 
           style: standard 
           builder_level: episode
-    - default: ratings         # Ratings overlays for TV Shows with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format.
-      template_variables:
-        rating1: critic
-        rating1_image: rt_tomato
-        rating1_font: config/overlays/fonts/Adlib.ttf
-        rating1_font_size: 63
+      - default: ratings         # Ratings overlays for TV Shows with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format.
+        template_variables:
+          rating1: critic
+          rating1_image: rt_tomato
+          rating1_font: config/overlays/fonts/Adlib.ttf
+          rating1_font_size: 63
 
-        rating2: user
-        rating2_image: imdb
-        rating2_font: config/overlays/fonts/Impact.ttf
-        rating2_font_size: 70
+          rating2: user
+          rating2_image: imdb
+          rating2_font: config/overlays/fonts/Impact.ttf
+          rating2_font_size: 70
 
-        rating3: audience
-        rating3_image: tmdb
-        rating3_font: config/overlays/fonts/Avenir_95_Black.ttf
-        rating3_font_size: 70
+          rating3: audience
+          rating3_image: tmdb
+          rating3_font: config/overlays/fonts/Avenir_95_Black.ttf
+          rating3_font_size: 70
 
-        horizontal_position: right
-    #- default: ratings                                  # Ratings overlays for individual episodes of TV Shows
-      #template_variables:
-        #rating1: critic
-        #rating1_image: imdb
-        #rating1_font: config/overlays/fonts/Impact.ttf
-        #rating1_font_size: 70
+          horizontal_position: right
+      #- default: ratings                                  # Ratings overlays for individual episodes of TV Shows
+        #template_variables:
+          #rating1: critic
+          #rating1_image: imdb
+          #rating1_font: config/overlays/fonts/Impact.ttf
+          #rating1_font_size: 70
 
-        #rating2: audience
-        #rating2_image: tmdb
-        #rating2_font: config/overlays/fonts/Avenir_95_Black.ttf
-        #rating2_font_size: 70
+          #rating2: audience
+          #rating2_image: tmdb
+          #rating2_font: config/overlays/fonts/Avenir_95_Black.ttf
+          #rating2_font_size: 70
 
-        #horizontal_position: right
-        #builder_level: episode
+          #horizontal_position: right
+          #builder_level: episode
     operations:
       #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
         #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
@@ -372,7 +372,7 @@ settings:
   #changes: notifiarr
   #delete: notifiarr
 plex:                            # Can be individually specified per library as well; REQUIRED for the script to run
-  url: http://192.168.1.1:32400    #fill in your IP address here ex 192.168.1.2 or 127.0.0.2 or whatever ip you use to access plex locally. 
+  url: http://192.168.1.16:32400    #fill in your IP address here ex 192.168.1.2 or 127.0.0.2 or whatever ip you use to access plex locally. 
   token: xxxxxxxxxxxxxxxxxxxxxxxxxx
   timeout: 60
   clean_bundles: true
