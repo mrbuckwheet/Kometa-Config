@@ -1,4 +1,4 @@
-## This is a personal config for PMM. You can edit this file to your needs and be sure to fill in your personal keys 
+## This is a personal config for Kometa. You can edit this file to your needs and be sure to fill in your personal keys 
 ## Overlays included for Movies in 4K, 1080p. Collections include IMDB, IMAX, DV, MCU, STar Wars. Star Trek, Harry Potter
 ## Overlays included for TV Shows in 4K. Collections inlude IMDB, Main Streaming Platforms and Major Networks.
 ##### Check your LIBRARY names in plex and copy them to the library names below. If your LIBRARY names are anything other than "Movies" and "TV Shows", change the names to match
@@ -11,20 +11,20 @@ libraries:                       # This is called out once within the config.yml
   Movies:  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/Movies_report.yml 
     collection_files:
-    - pmm: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - pmm: imdb                  # Creates IMDB Collections for Popular and Top 250
+    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+    - default: imdb                  # Creates IMDB Collections for Popular and Top 250
       template_variables:
           name_popular: IMDb Popular Movies    #Option to rename the default "IMDb Popular" to a custom name
           use_lowest: false
           visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
           visible_home_popular: true    #run once to create list in home settings
-    - pmm: universe
+    - default: universe
       template_variables:
         use_separator: false
         append_data:     # this adds custom lists imdb, trakt, or mdb
           mcu2: Marvel Chronological Order   # name of custom collection
         imdb_list_mcu2: https://www.imdb.com/list/ls029032797/   # link to list
-        url_poster_mcu2: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager-Images/master/universe/mcu.jpg # poster url (Wanted MCU but custom order, still use default assests from PMM) 
+        url_poster_mcu2: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager-Images/master/universe/mcu.jpg # poster url (Wanted MCU but custom order, still use default assests from Kometa) 
         exclude:
         - avp     #Alien / Predator
         - arrow   #Arrowverse
@@ -47,8 +47,8 @@ libraries:                       # This is called out once within the config.yml
     overlay_files:
     #- reset_overlays: plex      # reset overlays to plex or tmdb
     - remove_overlays: false     # Set this to true to remove all overlays
-    - pmm: ribbon
-    - pmm: audio_codec
+    - default: ribbon
+    - default: audio_codec
       template_variables:
           use_pcm: false
           use_flac: false
@@ -58,12 +58,12 @@ libraries:                       # This is called out once within the config.yml
           horizontal_align: left 
           vertical_align: bottom 
           style: standard 
-    - pmm: resolution
+    - default: resolution
       template_variables:
           use_720p: false
           use_576p: false
           use_480p: false
-    - pmm: ratings                                  # Ratings with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format
+    - default: ratings                                  # Ratings with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format
       template_variables:
         rating1: critic
         rating1_image: rt_tomato
@@ -90,13 +90,13 @@ libraries:                       # This is called out once within the config.yml
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
     report_path: config/missing/TV_report.yml
     collection_files:
-    - pmm: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - pmm: imdb                  # Creates IMDB Collections for Popular and Top 250 
+    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+    - default: imdb                  # Creates IMDB Collections for Popular and Top 250 
       template_variables:
         name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
         visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
         visible_home_popular: true    #run once to create list in home settings
-    - pmm: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have PMM streaming running also (Amazon, Netflix, Peacock etc)
+    - default: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
       template_variables:
           use_separator: false
           sync_mode: append
@@ -142,7 +142,7 @@ libraries:                       # This is called out once within the config.yml
             #- UKTV
             - USA
             #- YouTube
-            ####STREAMING NETWORKS#### This has moved to the PMM Streaming section (do not enable if you have "-PMM Streaming" On since this PMM config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
+            ####STREAMING NETWORKS#### This has moved to the Kometa Streaming section (do not enable if you have "-default: streaming" On since this Kometa config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
             #- Apple TV+
             #- Amazon
             #- discovery+
@@ -160,9 +160,9 @@ libraries:                       # This is called out once within the config.yml
             HBO Max:  
               - HBO
           sort_by: title.asc
-    - pmm: streaming # This will create collections for the following streaming services. 
+    - default: streaming # This will create collections for the following streaming services. 
       template_variables:
-          #collection_section: "050"  #this setting will bundle the streaming collections with "-pmm networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"  
+          #collection_section: "050"  #this setting will bundle the streaming collections with "-default: networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"  
           use_separator: false
           sep_style: stb
           sync_mode: append
@@ -198,28 +198,28 @@ libraries:                       # This is called out once within the config.yml
     overlay_files:
     #- reset_overlays: plex      #reset overlays to plex or tmdb
     - remove_overlays: false     # Set this to true to remove all overlays
-    - pmm: ribbon
-    - pmm: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
+    - default: ribbon
+    - default: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
       template_variables:
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
-    - pmm: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
+    - default: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
       template_variables:
           builder_level: season
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
-    - pmm: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
+    - default: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
       template_variables:
           builder_level: episode
           use_1080p: false
           use_720p: false
           use_576p: false
           use_480p: false
-    - pmm: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on. I recommend these setting to avoid too much clutter. 
+    - default: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on. I recommend these setting to avoid too much clutter. 
       template_variables:
           use_dtsx: false
           use_plus_atmos: false
@@ -237,7 +237,7 @@ libraries:                       # This is called out once within the config.yml
           horizontal_align: left 
           vertical_align: bottom 
           style: standard 
-    - pmm: audio_codec # Audio codec overlays at season level, Set the value to "true" if you want these formats on
+    - default: audio_codec # Audio codec overlays at season level, Set the value to "true" if you want these formats on
       template_variables:
           use_dtsx: false
           use_plus_atmos: false
@@ -256,7 +256,7 @@ libraries:                       # This is called out once within the config.yml
           vertical_align: bottom 
           style: standard 
           builder_level: season
-    - pmm: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
+    - default: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
       template_variables:
           use_dtsx: false
           use_plus_atmos: false
@@ -275,7 +275,7 @@ libraries:                       # This is called out once within the config.yml
           vertical_align: bottom 
           style: standard 
           builder_level: episode
-    - pmm: ratings         # Ratings overlays for TV Shows with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format.
+    - default: ratings         # Ratings overlays for TV Shows with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format.
       template_variables:
         rating1: critic
         rating1_image: rt_tomato
@@ -293,7 +293,7 @@ libraries:                       # This is called out once within the config.yml
         rating3_font_size: 70
 
         horizontal_position: right
-    #- pmm: ratings                                  # Ratings overlays for individual episodes of TV Shows
+    #- default: ratings                                  # Ratings overlays for individual episodes of TV Shows
       #template_variables:
         #rating1: critic
         #rating1_image: imdb
@@ -309,7 +309,7 @@ libraries:                       # This is called out once within the config.yml
         #builder_level: episode
     operations:
       #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
-        #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" PMM ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
+        #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
         #managed: true
         
       #mass_poster_update: plex                       #resets posters to tmdb or plex
@@ -382,12 +382,12 @@ plex:                            # Can be individually specified per library as 
   verify_ssl: 
 #notifiarr:
   #apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
-tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com https://metamanager.wiki/en/latest/config/tmdb/
+tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com https://kometa.wiki/en/latest/config/tmdb/
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
   language: en
   cache_expiration: 60
   region:
-trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account https://metamanager.wiki/en/latest/config/trakt/
+trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account https://kometa.wiki/en/latest/config/trakt/
   client_id: ####################
   client_secret: ####################
   pin:
@@ -399,7 +399,7 @@ trakt:                           # Some collections (Star Trek) will pull from t
     refresh_token:
     scope: public
     created_at:
-mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. https://metamanager.wiki/en/latest/config/mdblist/
+mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. https://kometa.wiki/en/latest/config/mdblist/
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx              
   cache_expiration: 60
 
