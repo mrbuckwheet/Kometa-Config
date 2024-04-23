@@ -385,8 +385,6 @@ plex:                            # Can be individually specified per library as 
 tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com https://kometa.wiki/en/latest/config/tmdb/
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
   language: en
-  cache_expiration: 60
-  region:
 trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account https://kometa.wiki/en/latest/config/trakt/
   client_id: ####################
   client_secret: ####################
