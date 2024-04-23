@@ -1,4 +1,5 @@
-# ~~Plex-Meta-Manager-Config~~ Kometa Config
+![logo](https://github.com/mrbuckwheet/Kometa-Config/assets/124317277/5323ca07-03fd-479a-b93d-681172b96290)
+# ~~Plex-Meta-Manager-Config~~ Kometa Config 
 Extract ENTIRE repository directory into your ~~Plex Meta Manager~~ Kometa Config folder. All Folders and Files are needed for the config to work. (fonts, icons and additiona .yml files are needed for the main config to work) 
 
 Movie Collection Preview
