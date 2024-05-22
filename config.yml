@@ -21,10 +21,10 @@ libraries:                       # This is called out once within the config.yml
       - default: universe
         template_variables:
           use_separator: false
-          append_data:     # this adds custom lists imdb, trakt, or mdb
-            mcu2: Marvel Chronological Order   # name of custom collection
-          imdb_list_mcu2: https://www.imdb.com/list/ls029032797/   # link to list
-          url_poster_mcu2: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager-Images/master/universe/mcu.jpg # poster url (Wanted MCU but custom order, still use default assests from Kometa) 
+          #append_data:     # this adds custom lists from imdb, trakt, or mdb
+            #customnamehere: Title of my Custom List   # name of custom collection. You can abbreviate the "customnamehere" to anything you want ie austinpow, quenttara
+          #imdb_list_customnamehere: https://www.imdb.com/list/lsXXXXXXXXXXXXXXXX/   # link to imdb list. You can also use mdblist_list_<<key>>, or trakt_list_<<key>> of those website lists
+          #url_poster_customnamehere: https://www.website.com/jpg # poster url  
           exclude:
           - avp     #Alien / Predator
           - arrow   #Arrowverse
@@ -32,7 +32,7 @@ libraries:                       # This is called out once within the config.yml
           - dcu     #DC Extended Universe
           - fast    #Fast & Furious
           - marvel  #In Association With Marvel
-          - mcu     #Marvel Cinematic Universe
+          #- mcu     #Marvel Cinematic Universe
           - middle  #Middle Earth
           - mummy   #The Mummy Universe
           - rocky   #Rocky / Creed
@@ -41,7 +41,7 @@ libraries:                       # This is called out once within the config.yml
           - askew   #View Askewniverse
           #- wizard #Wizarding World
           - xmen    #X-Men Universe
-          visible_home_mcu2: true  #This will show a collection on home screen in Plex, this case its Marvel Cronological Order
+          #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
       - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
     overlay_files:
