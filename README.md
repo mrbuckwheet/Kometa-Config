@@ -8,6 +8,8 @@ NEW MINIMALIST LOOK (based off of jmxd https://github.com/jmxd/Kometa):
 
 ![minimalist2](https://github.com/user-attachments/assets/47918dcc-c24f-44f1-bc35-42420da2fee5)
 
+
+ORIGINAL LOOK:
 Movie Collection Preview
 ![Movie Collection](https://user-images.githubusercontent.com/124317277/232326609-c407d4f2-5fbb-4189-b0e8-13d5456f5eb2.JPG)
 
