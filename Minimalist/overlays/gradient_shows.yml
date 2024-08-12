@@ -1,0 +1,58 @@
+overlays:
+  gradient_show_main:
+    overlay:
+      name: gradient_show_main
+      file: config/overlays/images/gradient/gradient_bottom.png
+    plex_search: 
+      any:
+        resolution: 
+          - 4K
+        hdr: true
+  gradient_show_audio:
+    overlay:
+      name: gradient_show_audio
+      file: config/overlays/images/gradient/gradient_bottom.png
+    plex_all: true
+    filters:
+      - audio_codec: dolby_atmos
+      - filepath.regex: (?i)^(?=.*\batmos(\b|\d))
+    
+  gradient_season:
+    overlay:
+      name: gradient_season_main
+      file: config/overlays/images/gradient/gradient_bottom.png
+    builder_level: season
+    plex_search: 
+      any:
+        resolution: 
+          - 4K
+        hdr: true
+  gradient_season_audio:
+    overlay:
+      name: gradient_season_audio
+      file: config/overlays/images/gradient/gradient_bottom.png
+    builder_level: season
+    plex_all: true
+    filters:
+      - audio_codec: dolby_atmos
+      - filepath.regex: (?i)^(?=.*\batmos(\b|\d))
+  
+  gradient_episode:
+    overlay:
+      name: gradient_episode_main
+      file: config/overlays/images/gradient/gradient_episode.png
+    builder_level: episode
+    plex_search: 
+      any:
+        resolution: 
+          - 4K
+        hdr: true
+  gradient_episode_audio:
+    overlay:
+      name: gradient_episode_audio
+      file: config/overlays/images/gradient/gradient_episode.png
+    builder_level: episode
+    plex_all: true
+    filters:
+      - audio_codec: dolby_atmos
+      - filepath.regex: (?i)^(?=.*\batmos(\b|\d))
