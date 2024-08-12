@@ -3,7 +3,7 @@
 Extract ENTIRE repository directory. Place all contents of either the "Main" or "Minimalist" folder (only choose 1) into your ~~Plex Meta Manager~~ Kometa Config folder. The inside of your Kometa config folder should match what is inside the Main/Minimalist folder. All Folders and Files inside the Main/Minimalist folders are needed for either config to work. (fonts, icons and additiona .yml files, etc) 
 If you have not updated your image from Plex Meta Manager to Kometa yet (I recommend you do) you can still use the PMM version of this config [_HERE_](https://github.com/mrbuckwheet/Kometa-Config/releases/tag/PMM-Version) 
 
-NEW MINIMALIST LOOK (based off of jmxd https://github.com/jmxd/Kometa):
+NEW MINIMALIST LOOK (based off of jmxd https://github.com/jmxd/Kometa - white overlays are replaced with colored ones and resolution numbers like 1080/720/480 are replaced with HD for a cleaner look. Scores are moved to the top left and all info/codecs are placed on the bottom with proper gradients)
 ![minimalist1](https://github.com/user-attachments/assets/754245a9-55b8-45d1-9e9b-9aba05479519)
 
 ![minimalist2](https://github.com/user-attachments/assets/47918dcc-c24f-44f1-bc35-42420da2fee5)
