@@ -5,7 +5,7 @@ Extract ENTIRE repository directory. Place all contents of either the "Main" or 
 If you have not updated your image from Plex Meta Manager to Kometa yet (I recommend you do) you can still use the PMM version of this config [_HERE_](https://github.com/mrbuckwheet/Kometa-Config/releases/tag/PMM-Version) 
 
 ## NEW MINIMALIST LOOK 
-(based off of jmxd https://github.com/jmxd/Kometa - white overlays are replaced with colored ones and resolution numbers like 1080/720/480 are replaced with HD for a cleaner look. Scores are moved to the top left and all info/codecs are placed on the bottom with proper gradients) 
+(based off of jmxd https://github.com/jmxd/Kometa - white overlays are replaced with colored ones and resolution numbers like 1080/720/480 are replaced with HD for a cleaner look. Scores are moved to the top left and all info/codecs are placed on the bottom with proper gradients. Score default is set to "mass_audience_rating_update: mdb_tmdb" and can be changed under the operations section in config.yml) 
 
 \*\*\* ***For the minimalist template to work correctly you MUST use the TRaSH naming convention for your file names and set the "Ratings Source" under your movie library settings to "The Movie Database"*** \*\*\*
 
