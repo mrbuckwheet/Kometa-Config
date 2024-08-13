@@ -11,6 +11,13 @@ If you have not updated your image from Plex Meta Manager to Kometa yet (I recom
 
 https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/#plex
 
+## Dynamic Collection Builder
+The dynamic collection builder in the Movie Collections.yml file will automatically make collections when 2 (this value can be customized) or more Movies from the same collection are in your library. 
+
+![Screenshot 2024-08-14 041209](https://github.com/user-attachments/assets/56cad566-ae90-4e02-b67a-07982a61c835)
+
+\*\*\* ***It is recomment to disable "Minimum automatic collection size" under the advanced library settings. You can also run the "python kometa.py --delete-collections" command if you have previous collections from plex or manually added them before running Kometa to prevent collection duplicates or if you want a clean start*** \*\*\*
+
 
 <br/><br/><br/>
 ## <p align="center"> MINIMALIST
