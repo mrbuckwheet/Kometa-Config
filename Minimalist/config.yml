@@ -105,7 +105,12 @@ libraries:                       # This is called out once within the config.yml
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
       mass_user_rating_update: mdb_imdb           #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
       mass_critic_rating_update: mdb_tomatoes     #  This operation will update the critic rating in plex with rotten tomatoes ratings information
-      mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating in plex with TMDb ratings information
+      
+      ################################################################################################################################################
+      ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
+      ################################################################################################################################################
+      
+      mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
 
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
     report_path: config/missing/TV_report.yml
