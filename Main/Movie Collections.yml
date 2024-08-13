@@ -1,22 +1,40 @@
 ##These collection are created as if you were using the advanced search field in Plex. Below are filters for Imax and 4k Dolby Vision Movies.
 ##You can add or remove filters baised on your own preferences. 
 
+templates: ### this is the template for building a dynamic collection
+  collection:
+    optional:
+      - value
+      - movie
+    tmdb_collection_details: <<value>>
+    tmdb_movie: <<movie>>
+    sync_mode: sync
+    collection_order: release ### sort option for the collection
+    minimum_items: 2 ### adjust this to the min number of movies for a collection to be built 
+    delete_below_minimum: true  ### if a movie is deleted from your library and the collection is now below the min this option will delete the collection
+
 collections:
-      4K Dolby Vision: #fiters only movies with 4K and Dolby Vision and places them in a collection 
-        plex_all: true
-        filters: 
-            has_dolby_vision: true
-            resolution: 4k
-        sort_title: "!021_+4K Dolby Vision" #This places the collection in a specific order vs other collections based on the PMM collection section order 
-        collection_order: title.asc 
-        url_poster: https://theposterdb.com/api/assets/226933
-      IMAX:              #filters only movies with the edition tag IMAX, Imax-E, Extended IMAX
-        plex_search:
-          any: 
-            edition: 
-              - Imax
-              - Extended Imax
-              - Imax-E
-        sort_title: "!021_+IMAX"         #This places the collection in a specific order vs other collections based on the PMM collection section order
-        collection_order: title.asc
-        url_poster: https://theposterdb.com/api/assets/224736
+  4K Dolby Vision: #fiters only movies with 4K and Dolby Vision and places them in a collection 
+    plex_all: true
+    filters: 
+      has_dolby_vision: true
+      resolution: 4k
+    sort_title: "!021_+4K Dolby Vision" #This places the collection in a specific order vs other collections based on the PMM collection section order 
+    collection_order: title.asc 
+    url_poster: https://theposterdb.com/api/assets/226933
+  IMAX:              #filters only movies with the edition tag IMAX, Imax-E, Extended IMAX
+    plex_search:
+      any: 
+        edition: 
+          - Imax
+          - Extended Imax
+          - Imax-E
+    sort_title: "!021_+IMAX"         #This places the collection in a specific order vs other collections based on the PMM collection section order
+    collection_order: title.asc
+    url_poster: https://theposterdb.com/api/assets/224736
+
+dynamic_collections:
+  TMDb Collections:          # This name is the mapping name
+    template: collection
+    type: tmdb_collection
+    #remove_suffix: "Collection"  ### removes the word "Collection" from the title
