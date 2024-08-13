@@ -103,8 +103,8 @@ libraries:                       # This is called out once within the config.yml
     
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
-      mass_user_rating_update: mdb_imdb           #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
-      mass_critic_rating_update: mdb_tomatoes     #  This operation will update the critic rating in plex with rotten tomatoes ratings information
+      #mass_user_rating_update: mdb_imdb           #  Since the minimalist look does not use these scores they are optional. This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
+      #mass_critic_rating_update: mdb_tomatoes     #  Since the minimalist look does not use these scores they are optional. This operation will update the critic rating in plex with rotten tomatoes ratings information
       
       ################################################################################################################################################
       ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
