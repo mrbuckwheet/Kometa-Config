@@ -109,7 +109,8 @@ libraries:                       # This is called out once within the config.yml
       ################################################################################################################################################
       ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
       ################################################################################################################################################
-      
+
+      #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
       mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
 
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
