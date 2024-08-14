@@ -18,8 +18,8 @@ libraries:                       # This is called out once within the config.yml
       template_variables:
         name_popular: IMDb Popular Movies    #Option to rename the default "IMDb Popular" to a custom name
         use_lowest: false
-          visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-          visible_home_popular: true    #run once to create list in home settings
+        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+        visible_home_popular: true    #run once to create list in home settings
     - default: universe
       template_variables:
         use_separator: false
