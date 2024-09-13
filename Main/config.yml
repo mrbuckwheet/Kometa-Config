@@ -8,6 +8,11 @@
 ## TMDB and mdblist accounts are required for this scrypt to work. Fill in your apikeys where there are XXXXXXXXXXXXXXXXXXX
 
 libraries:                       # This is called out once within the config.yml file
+
+############################  
+########## MOVIES ##########
+############################  
+    
   Movies:  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/Movies_report.yml 
     #reset_overlays: plex      # reset overlays to plex or tmdb
@@ -46,6 +51,7 @@ libraries:                       # This is called out once within the config.yml
         #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
     - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
     
+########## MOVIE OVERLAYS ##########      
     overlay_files:
     - default: ribbon
     - default: audio_codec
@@ -81,11 +87,18 @@ libraries:                       # This is called out once within the config.yml
         rating3_font_size: 70
 
         horizontal_position: right
+        
+########## MOVIE OPERATIONS ##########
+        
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
       mass_user_rating_update: mdb_imdb           #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
       mass_critic_rating_update: mdb_tomatoes     #  This operation will update the critic rating in plex with rotten tomatoes ratings information
       mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating in plex with TMDb ratings information
+
+##############################
+########## TV SHOWS ##########
+##############################
 
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
     report_path: config/missing/TV_report.yml
@@ -195,30 +208,22 @@ libraries:                       # This is called out once within the config.yml
         #####################
         #####################
         #IF YOUR COLLECTIONS HAVE DUPLICATES OR IF YOU HAVE RUN ANY OF MY PREVIOUS CONGIFS USE THE OPERATIONS SETTING TO DELETE ALL MANAGED COLLECTIONS AND START FRESH 
-          
+ 
+
+########## TV SHOW OVERLAYS ########## 
                                        
     overlay_files:
+    
+##########SHOWS##########
     - default: ribbon
+
     - default: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
       template_variables:
         use_1080p: false
         use_720p: false
         use_576p: false
         use_480p: false
-    - default: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
-        builder_level: season
-        use_1080p: false
-        use_720p: false
-        use_576p: false
-        use_480p: false
-    - default: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
-        builder_level: episode
-        use_1080p: false
-        use_720p: false
-        use_576p: false
-        use_480p: false
+
     - default: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on. I recommend these setting to avoid too much clutter. 
       template_variables:
         use_dtsx: false
@@ -237,44 +242,7 @@ libraries:                       # This is called out once within the config.yml
         horizontal_align: left 
         vertical_align: bottom 
         style: standard 
-    - default: audio_codec # Audio codec overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
-        use_dtsx: false
-        use_plus_atmos: false
-        use_ma: false
-        use_hra: false
-        use_plus: false
-        use_dtses: false
-        use_dts: false
-        use_digital: false
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
-        horizontal_align: left 
-        vertical_align: bottom 
-        style: standard 
-        builder_level: season
-    - default: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
-        use_dtsx: false
-        use_plus_atmos: false
-        use_ma: false
-        use_hra: false
-        use_plus: false
-        use_dtses: false
-        use_dts: false
-        use_digital: false
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
-        horizontal_align: left 
-        vertical_align: bottom 
-        style: standard 
-        builder_level: episode
+
     - default: ratings         # Ratings overlays for TV Shows with custom fonts matched to the style of the rating, font_size, and on the right in 'square' format.
       template_variables:
         rating1: critic
@@ -293,7 +261,66 @@ libraries:                       # This is called out once within the config.yml
         rating3_font_size: 70
 
         horizontal_position: right
-    #- default: ratings                                  # Ratings overlays for individual episodes of TV Shows
+    
+##########SEASONS##########
+    - default: resolution # Resolution overlays at season level, Set the value to "true" if you want these formats on
+      template_variables:
+        builder_level: season
+        use_1080p: false
+        use_720p: false
+        use_576p: false
+        use_480p: false
+
+    - default: audio_codec # Audio codec overlays at season level, Set the value to "true" if you want these formats on
+      template_variables:
+        use_dtsx: false
+        use_plus_atmos: false
+        use_ma: false
+        use_hra: false
+        use_plus: false
+        use_dtses: false
+        use_dts: false
+        use_digital: false
+        use_pcm: false
+        use_flac: false
+        use_opus: false
+        use_mp3: false
+        use_aac: false
+        horizontal_align: left 
+        vertical_align: bottom 
+        style: standard 
+        builder_level: season    
+
+##########EPISODES##########
+    - default: resolution # Resolution overlays at episode level, Set the value to "true" if you want these formats on
+      template_variables:
+        builder_level: episode
+        use_1080p: false
+        use_720p: false
+        use_576p: false
+        use_480p: false
+        
+    - default: audio_codec # Audio codec overlays at episode level, Set the value to "true" if you want these formats on
+      template_variables:
+        use_dtsx: false
+        use_plus_atmos: false
+        use_ma: false
+        use_hra: false
+        use_plus: false
+        use_dtses: false
+        use_dts: false
+        use_digital: false
+        use_pcm: false
+        use_flac: false
+        use_opus: false
+        use_mp3: false
+        use_aac: false
+        horizontal_align: left 
+        vertical_align: bottom 
+        style: standard 
+        builder_level: episode 
+    
+    #- default: ratings   # Ratings overlays for individual episodes of TV Shows (If you have a lot of episodes this will increase the time for kometa to run drasticly)
       #template_variables:
         #rating1: critic
         #rating1_image: imdb
@@ -307,6 +334,9 @@ libraries:                       # This is called out once within the config.yml
 
         #horizontal_position: right
         #builder_level: episode
+        
+########## TV SHOW OPERATIONS ##########        
+        
     operations:
       #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
         #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
@@ -319,6 +349,10 @@ libraries:                       # This is called out once within the config.yml
       #mass_episode_critic_rating_update: mdb_imdb       # Update critic ratings with imdb for episodes not needed for tautilli
       #mass_episode_audience_rating_update: mdb_tmdb     # Update audience ratings with tmdb for episodes not needed for tautulli
            
+#####################################
+########## KOMETA SETTINGS ##########
+#####################################
+
 settings:
   cache: true
   cache_expiration: 60

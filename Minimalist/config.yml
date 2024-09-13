@@ -8,6 +8,11 @@
 ## TMDB and mdblist accounts are required for this scrypt to work. Fill in your apikeys where there are XXXXXXXXXXXXXXXXXXX
 
 libraries:                       # This is called out once within the config.yml file
+
+############################  
+########## MOVIES ##########
+############################ 
+  
   Movies:  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/Movies_report.yml 
     #reset_overlays: plex      # reset overlays to plex or tmdb
@@ -45,7 +50,8 @@ libraries:                       # This is called out once within the config.yml
         - xmen    #X-Men Universe
         #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
     - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
-    
+
+########## MOVIE OVERLAYS ##########    
     overlay_files:
     #- default: ribbon
     - file: config/overlays/gradient_movies.yml   #Movie Gradient
@@ -100,6 +106,7 @@ libraries:                       # This is called out once within the config.yml
 
     - file: config/overlays/audience_rating.yml
     
+########## MOVIE OPERATIONS ##########
     
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
@@ -112,6 +119,10 @@ libraries:                       # This is called out once within the config.yml
 
       #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
       mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
+
+##############################
+########## TV SHOWS ##########
+##############################
 
   TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
     report_path: config/missing/TV_report.yml
@@ -218,18 +229,16 @@ libraries:                       # This is called out once within the config.yml
         - amazon
         #- showtime
         sort_by: title.asc 
-        #####################
-        #####################
-        #IF YOUR COLLECTIONS HAVE DUPLICATES OR IF YOU HAVE RUN ANY OF MY PREVIOUS CONGIFS USE THE OPERATIONS SETTING TO DELETE ALL MANAGED COLLECTIONS AND START FRESH 
-          
-                                       
+       
+
+########## TV SHOW OVERLAYS ##########
     overlay_files:
     #- default: ribbon
-######## The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
 
-########SHOWS########    
+# The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+##########SHOWS##########    
     - file: config/overlays/gradient_shows.yml    #Top Gradient
-    - default: resolution   #Resolution & Dynamic Range
+    - default: resolution   # Resolution overlays at shows level, Set the value to "true" if you want these formats on
       template_variables:
         file: config/overlays/resolution/<<key>><<alt>>.png
         use_resolution: true
@@ -247,7 +256,7 @@ libraries:                       # This is called out once within the config.yml
         use_576p: false
         use_480p: false
 
-    - default: audio_codec   #Audio Codec
+    - default: audio_codec   # Audio codec overlays at shows level, Set the value to "true" if you want these formats on.
       template_variables:
         file: config/overlays/audio_codec/<<key>>.png
         horizontal_offset: 50
@@ -274,8 +283,8 @@ libraries:                       # This is called out once within the config.yml
 
     - file: config/overlays/audience_rating.yml
 
-########SEASONS########
-    - default: resolution   #Resolution & Dynamic Range
+##########SEASONS##########
+    - default: resolution   #Resolution overlays at season level, Set the value to "true" if you want these formats on
       template_variables:
         file: config/overlays/resolution/<<key>><<alt>>.png
         use_resolution: true
@@ -294,7 +303,7 @@ libraries:                       # This is called out once within the config.yml
         use_480p: false
         builder_level: season
 
-    - default: audio_codec   #Audio Codec
+    - default: audio_codec   #Audio codec overlays at season level, Set the value to "true" if you want these formats on
       template_variables:
         file: config/overlays/audio_codec/<<key>>.png
         horizontal_offset: 50
@@ -320,8 +329,8 @@ libraries:                       # This is called out once within the config.yml
         use_aac: false
         builder_level: season
 
-########EPISODES########
-    - default: resolution   #Resolution & Dynamic Range
+##########EPISODES##########
+    - default: resolution   #Resolution overlays at episode level, Set the value to "true" if you want these formats on
       template_variables:
         file: config/overlays/resolution/<<key>><<alt>>.png
         use_resolution: true
@@ -340,7 +349,7 @@ libraries:                       # This is called out once within the config.yml
         use_480p: false
         builder_level: episode
 
-    - default: audio_codec   #Audio Codec
+    - default: audio_codec   #Audio codec overlays at episode level, Set the value to "true" if you want these formats on
       template_variables:
         file: config/overlays/audio_codec/<<key>>.png
         horizontal_offset: 50
@@ -366,6 +375,7 @@ libraries:                       # This is called out once within the config.yml
         use_aac: false
         builder_level: episode
         
+########## TV SHOW OPERATIONS ##########
         
     operations:
       #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
@@ -379,6 +389,10 @@ libraries:                       # This is called out once within the config.yml
       #mass_episode_critic_rating_update: mdb_imdb       # Update critic ratings with imdb for episodes not needed for tautilli
       #mass_episode_audience_rating_update: mdb_tmdb     # Update audience ratings with tmdb for episodes not needed for tautulli
            
+#####################################
+########## KOMETA SETTINGS ##########
+#####################################
+
 settings:
   cache: true
   cache_expiration: 60
