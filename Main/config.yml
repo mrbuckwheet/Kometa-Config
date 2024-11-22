@@ -355,7 +355,7 @@ libraries:                       # This is called out once within the config.yml
 
 settings:
   cache: true
-  cache_expiration: 60
+  cache_expiration: 30
   asset_directory: config/assets
   missing_path: config/missing
   asset_folders: true
@@ -368,11 +368,11 @@ settings:
   show_missing_episode_assets: false
   show_asset_not_needed: false
   sync_mode: sync
-  minimum_items: 1
+  minimum_items: 2
   default_collection_order:
   delete_below_minimum: true
   delete_not_scheduled: false
-  run_again_delay: 2
+  run_again_delay: 0
   missing_only_released: false
   only_filter_missing: false
   show_unmanaged: true
