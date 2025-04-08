@@ -354,10 +354,14 @@ libraries:                       # This is called out once within the config.yml
 #####################################
 
 settings:
+  run_order:                     # recommened run order keep operations first
+  - operations
+  - metadata
+  - collections
+  - overlays
   cache: true
   cache_expiration: 30
   asset_directory: config/assets
-  missing_path: config/missing
   asset_folders: true
   asset_depth: 0
   create_asset_folders: true
@@ -376,6 +380,7 @@ settings:
   missing_only_released: false
   only_filter_missing: false
   show_unmanaged: true
+  show_unconfigured: true
   show_filtered: false
   show_options: false
   show_missing: false
@@ -385,19 +390,13 @@ settings:
   ignore_ids:
   ignore_imdb_ids:
   item_refresh_delay: 0
-  playlist_sync_to_user: all
-  playlist_exclude_user:
+  playlist_sync_to_users: all
+  playlist_exclude_users:
   playlist_report: false
   verify_ssl: true
   custom_repo:
-  check_nightly: false
-  show_unconfigured: true
-  playlist_exclude_users:
-  run_order:                     # recommened run order keep operations first
-  - operations
-  - metadata
-  - collections
-  - overlays
+  overlay_artwork_filetype: jpg
+  overlay_artwork_quality: 95
 #webhooks:                        # This is a webhook for notifiarr.  
   #error: notifiarr
   #version: notifiarr
