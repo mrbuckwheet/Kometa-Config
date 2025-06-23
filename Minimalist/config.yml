@@ -238,6 +238,31 @@ libraries:                       # This is called out once within the config.yml
 # The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
 ##########SHOWS##########    
     - file: config/overlays/gradient_shows.yml    #Top Gradient
+
+    - default: status
+      template_variables:
+        text_canceled: C A N C E L E D
+        text_airing: A I R I N G
+        text_returning: R E T U R N I N G
+        text_ended: E N D E D
+        horizontal_align: center
+        vertical_align: top
+        vertical_offset: 10
+        horizontal_offset: 0
+        back_color: '#00000000'  #adds a background color to text box current value is transparent 
+        #back_color_airing: '#00000000'
+        #back_color_returning: '#00000000'
+        #back_color_canceled: '#00000000'
+        #back_color_ended: '#00000000'
+        back_height: 50
+        back_width: 600
+        font: config/overlays/fonts/AvenirNextLTPro-Bold.ttf
+        font_size: 55
+        font_color_airing: '#016920'
+        font_color_returning: '#816300'
+        font_color_canceled: '#ed1f1f'
+        font_color_ended: '#6699FF'
+
     - default: resolution   # Resolution overlays at shows level, Set the value to "true" if you want these formats on
       template_variables:
         file: config/overlays/resolution/<<key>><<alt>>.png
@@ -451,7 +476,7 @@ plex:                            # Can be individually specified per library as 
   clean_bundles: true
   empty_trash: true
   optimize: true
-  db_cache: 1024
+  db_cache: 4096
   verify_ssl: 
 #notifiarr:
   #apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -459,7 +484,7 @@ tmdb:                            # REQUIRED for the script to run you need to cr
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
   language: en
   region: US                     # 	ISO 3166-1 Code of the User Region for use with Other TMDb Builders https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
-  cache_expiration: 60
+  cache_expiration: 14
 trakt:                           # Some collections (Star Trek) will pull from trakt and will require you to create an account https://kometa.wiki/en/latest/config/trakt/
   client_id: ####################
   client_secret: ####################
@@ -474,6 +499,6 @@ trakt:                           # Some collections (Star Trek) will pull from t
     created_at:
 mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. https://kometa.wiki/en/latest/config/mdblist/
   apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx              
-  cache_expiration: 60
+  cache_expiration: 14
 
   

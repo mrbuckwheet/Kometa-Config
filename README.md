@@ -22,28 +22,32 @@ The dynamic collection builder in the Movie Collections.yml file will automatica
 <br/><br/><br/>
 ## <p align="center"> MINIMALIST
 #### <p align="center"> Movie Overlay Preview
-![Minimalist Movie Overlay](https://github.com/user-attachments/assets/4133f91c-6166-4d00-9da4-c7d83566d8db)
+![Minimalist Movie Overlay](Overlay Preview/Minimalist Movie Overlay.png)
 
 
 #### <p align="center"> TV Overlay Preview
-![Minimalist TV Overlay](https://github.com/user-attachments/assets/07d53450-4e47-4b49-b442-32667df83077)
+![Minimalist TV Overlay](Overlay Preview/Minimalist TV Overlay.png)
 
 
 #### <p align="center"> Movie Collection Preview
 
-![Minimalist Movie Collection](https://github.com/user-attachments/assets/312ab386-e4d7-481f-a58d-aa6d212d7aec)
+![Minimalist Movie Collection](Overlay Preview/Minimalist Movie Collection.png)
+
+#### <p align="center"> TV Collection Preview
+
+![Minimalist TV Collection](Overlay Preview/Minimalist TV Collection.png)
 
 
 <br/><br/><br/>
 ## <p align="center">ORIGINAL
 #### <p align="center">Movie Overlay Preview
-![Original Movies Overlay Preview](https://user-images.githubusercontent.com/124317277/232326613-676b4b3a-d2c9-46b0-bf3c-b5f22d8aff46.JPG)
+![Original Movies Overlay Preview](Overlay Preview/Original Movies Overlay Preview.JPGOriginal Movies Overlay Preview.JPG)
 
 #### <p align="center">TV Overlay Preview
-![Original TV Overlay Preview](https://user-images.githubusercontent.com/124317277/232326617-b5c4f59d-5491-4830-8ea5-d6874d4b1c06.JPG)
+![Original TV Overlay Preview](Overlay Preview/Original TV Overlay Preview.JPG)
 
 #### <p align="center">Movie Collection Preview
-![Original Movie Collection](https://user-images.githubusercontent.com/124317277/232326609-c407d4f2-5fbb-4189-b0e8-13d5456f5eb2.JPG)
+![Original Movie Collection](Overlay Preview/Original Movie Collection.JPG)
 
 
 

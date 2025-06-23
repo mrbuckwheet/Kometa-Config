@@ -1,4 +1,9 @@
 overlays:
+  gradient_show_status:
+    overlay:
+      name: gradient_show_status
+      file: config/overlays/images/gradient/gradient_top.png
+    plex_all: true
   gradient_show_main:
     overlay:
       name: gradient_show_main
