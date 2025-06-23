@@ -22,32 +22,32 @@ The dynamic collection builder in the Movie Collections.yml file will automatica
 <br/><br/><br/>
 ## <p align="center"> MINIMALIST
 #### <p align="center"> Movie Overlay Preview
-![Minimalist Movie Overlay](Overlay Preview/Minimalist Movie Overlay.png)
+![Minimalist Movie Overlay](</Overlay Preview/Minimalist Movie Overlay.png>)
 
 
 #### <p align="center"> TV Overlay Preview
-![Minimalist TV Overlay](Overlay Preview/Minimalist TV Overlay.png)
+![Minimalist TV Overlay](</Overlay Preview/Minimalist TV Overlay.png>)
 
 
 #### <p align="center"> Movie Collection Preview
 
-![Minimalist Movie Collection](Overlay Preview/Minimalist Movie Collection.png)
+![Minimalist Movie Collection](</Overlay Preview/Minimalist Movie Collection.png>)
 
 #### <p align="center"> TV Collection Preview
 
-![Minimalist TV Collection](Overlay Preview/Minimalist TV Collection.png)
+![Minimalist TV Collection](</Overlay Preview/Minimalist TV Collection.png>)
 
 
 <br/><br/><br/>
 ## <p align="center">ORIGINAL
 #### <p align="center">Movie Overlay Preview
-![Original Movies Overlay Preview](Overlay Preview/Original Movies Overlay Preview.JPGOriginal Movies Overlay Preview.JPG)
+![Original Movies Overlay Preview](</Overlay Preview/Original Movies Overlay Preview.JPG>)
 
 #### <p align="center">TV Overlay Preview
-![Original TV Overlay Preview](Overlay Preview/Original TV Overlay Preview.JPG)
+![Original TV Overlay Preview](</Overlay Preview/Original TV Overlay Preview.JPG>)
 
 #### <p align="center">Movie Collection Preview
-![Original Movie Collection](Overlay Preview/Original Movie Collection.JPG)
+![Original Movie Collection](</Overlay Preview/Original Movie Collection.JPG>)
 
 
 
