@@ -1,11 +1,11 @@
 ## This is a personal config for Kometa. You can edit this file to your needs and be sure to fill in your personal keys 
 ## Overlays included for Movies in 4K, 1080p. Collections include IMDB, IMAX, DV, MCU, STar Wars. Star Trek, Harry Potter
-## Overlays included for TV Shows in 4K. Collections inlude IMDB, Main Streaming Platforms and Major Networks.
+## Overlays included for TV Shows in 4K. Collections include IMDB, Main Streaming Platforms and Major Networks.
 ##### Check your LIBRARY names in plex and copy them to the library names below. If your LIBRARY names are anything other than "Movies" and "TV Shows", change the names to match
 ##### ie. change the "Movies" to your movie library name and change "TV Shows" to your tv library name
 ## Fill in your plex IP under Settings Category along with plex token
 ## This version includes Notifiarr settings and webhook 
-## TMDB and mdblist accounts are required for this scrypt to work. Fill in your apikeys where there are XXXXXXXXXXXXXXXXXXX
+## TMDB and mdblist accounts are required for this script to work. Fill in your apikeys where there are XXXXXXXXXXXXXXXXXXX
 
 libraries:                       # This is called out once within the config.yml file
 
@@ -56,7 +56,7 @@ libraries:                       # This is called out once within the config.yml
     #- default: ribbon
     - file: config/overlays/gradient_movies.yml   #Movie Gradient
     
-    ######## The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+    ######## The following adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
     - default: resolution   #Resolution & Dynamic Range  
       template_variables:
         file: config/overlays/resolution/<<key>><<alt>>.png
@@ -110,15 +110,20 @@ libraries:                       # This is called out once within the config.yml
     
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
-      #mass_user_rating_update: mdb_imdb           #  Since the minimalist look does not use these scores they are optional. This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
-      #mass_critic_rating_update: mdb_tomatoes     #  Since the minimalist look does not use these scores they are optional. This operation will update the critic rating in plex with rotten tomatoes ratings information
+      #mass_user_rating_update: mdb_imdb          #  Since the minimalist look does not use these scores they are optional. This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
+      #mass_critic_rating_update: mdb_tomatoes    #  Since the minimalist look does not use these scores they are optional. This operation will update the critic rating in plex with rotten tomatoes ratings information
       
       ################################################################################################################################################
       ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
       ################################################################################################################################################
-
+      
       #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
+      
+      ##if scores do not show up or need to be reset change the value below from "mdb_tmdb" to "reset"
+      
       mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
+      
+      
 
 ##############################
 ########## TV SHOWS ##########
@@ -133,7 +138,7 @@ libraries:                       # This is called out once within the config.yml
     - default: imdb                  # Creates IMDB Collections for Popular and Top 250 
       template_variables:
         name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
-        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libraries > Manage Recommendations
         visible_home_popular: true    #run once to create list in home settings
     - default: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
       template_variables:
@@ -141,7 +146,7 @@ libraries:                       # This is called out once within the config.yml
         sync_mode: append
         sep_style: stb
           #name_format: <<key_name>> Shows
-        include:  ##Remove "#" infront of lines below to add network to Collections
+        include:  ##Remove "#" in front of lines below to add network to Collections
         - A&E
         - ABC
         - AMC
@@ -193,7 +198,7 @@ libraries:                       # This is called out once within the config.yml
         #- Peacock          
         addons:  #these addons bundle additional network Collections under a main collection. 
           Paramount+:     #main network
-          - Paramount Network      #network you want bundle under the "Paramoun+" collection
+          - Paramount Network      #network you want bundle under the "Paramount+" collection
           Peacock:        
           - NBC
           HBO Max:  
@@ -235,7 +240,7 @@ libraries:                       # This is called out once within the config.yml
     overlay_files:
     #- default: ribbon
 
-# The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+# The following adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
 ##########SHOWS##########    
     - file: config/overlays/gradient_shows.yml    #Top Gradient
 
@@ -409,19 +414,29 @@ libraries:                       # This is called out once within the config.yml
         #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
         #managed: true
         
-      #mass_poster_update: plex                       #resets posters to tmdb or plex
-      mass_user_rating_update: mdb_imdb                  #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
-      mass_critic_rating_update: mdb_tomatoes            #  This operation will update the critic rating in plex with rotten tomatoes ratings information
+      #mass_poster_update: plex                          #  resets posters to tmdb or plex
+      #mass_user_rating_update: mdb_imdb                 #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
+      #mass_critic_rating_update: mdb_tomatoes           #  This operation will update the critic rating in plex with rotten tomatoes ratings information
+      #mass_episode_critic_rating_update: mdb_imdb       #  Update critic ratings with imdb for episodes not needed for tautulli
+      
+      ################################################################################################################################################
+      ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
+      ################################################################################################################################################
+
+      #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
+      
+      ##if scores do not show up or need to be reset change the value below from "mdb_tmdb" to "reset" #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
+      
       mass_audience_rating_update: mdb_tmdb              #  This operation will update the audience rating in plex with TMDb ratings information
-      #mass_episode_critic_rating_update: mdb_imdb       # Update critic ratings with imdb for episodes not needed for tautilli
-      #mass_episode_audience_rating_update: mdb_tmdb     # Update audience ratings with tmdb for episodes not needed for tautulli
+      #mass_episode_audience_rating_update: mdb_tmdb     #  Update audience ratings with tmdb for episodes not needed for tautulli
+      
            
 #####################################
 ########## KOMETA SETTINGS ##########
 #####################################
 
 settings:
-  run_order:                     # recommened run order keep operations first
+  run_order:                     # recommended run order keep operations first
   - operations
   - metadata
   - collections
@@ -492,7 +507,7 @@ trakt:                           # Some collections (Star Trek) will pull from t
   client_secret: ####################
   pin:
   authorization:
-    # everything below is autofilled by the script
+    # everything below is auto-filled by the script
     access_token:
     token_type:
     expires_in:
