@@ -1,0 +1,367 @@
+'sonarr_url': 'http://sonarr:8989'
+
+'sonarr_api_key': 'XXXXXXXXXXXXXXXXXXXXX'
+
+'use_tvdb': false
+
+'skip_unmonitored': true
+
+'ignore_finales_tags': 'ignorefinales'
+
+'utc_offset': -5
+
+'recent_days_new_show': 7
+
+'collection_new_show':
+  'collection_name': 'New Show'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2New Show'
+
+'backdrop_new_show':
+  'enable': false
+  'back_color': '#d9d90b'
+  'weight': 50
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_new_show':
+  'font_color': '#d9d90b'
+  'weight': 50
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'RECENTLY ADDED'
+
+'future_days_new_season': 182
+
+'collection_new_season':
+  'build_collection': false
+  'collection_name': 'New Season Soon'
+  'ignore_blank_results': 'true'
+  'item_label': 'New Season Soon'
+  'non_item_remove_label': 'New Season Soon'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2New Season Soon'
+
+'backdrop_new_season':
+  'enable': false
+  'back_color': '#d9d90b'
+  'weight': 25
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_new_season':
+  'capitalize_dates': true
+  'font_color': '#d9d90b'
+  'weight': 25
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'date_format': 'ddd m/d'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'NEW SEASON'
+
+'recent_days_new_season_started': 7
+
+'collection_new_season_started':
+  'collection_name': 'New Season Started'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2New Season Started'
+
+'backdrop_new_season_started':
+  'enable': false
+  'back_color': '#d9d90b'
+  'weight': 35
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_new_season_started':
+  'font_color': '#d9d90b'
+  'weight': 35
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 15
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'NEW SEASON STARTED'
+
+'future_days_upcoming_episode': 31
+
+'collection_upcoming_episode':
+  'collection_name': 'Upcoming Episode'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Upcoming Episode'
+
+'backdrop_upcoming_episode':
+  'enable': false
+  'back_color': '#08cc08'
+  'weight': 20
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_upcoming_episode':
+  'capitalize_dates': true
+  'font_color': '#08cc08'
+  'weight': 20
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'date_format': 'ddd m/d'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'NEXT EPISODE'
+
+'future_days_upcoming_finale': 31
+
+'collection_upcoming_finale':
+  'collection_name': 'Upcoming Finale'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Upcoming Finale'
+
+'backdrop_upcoming_finale':
+  'enable': false
+  'back_color': '#61BBFF'
+  'weight': 40
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_upcoming_finale':
+  'capitalize_dates': true
+  'font_color': '#61BBFF'
+  'weight': 40
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'date_format': 'ddd m/d'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'FINALE AIRS'
+
+'recent_days_season_finale': 14
+
+'collection_season_finale':
+  'collection_name': 'Season Finale'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Season Finale'
+
+'backdrop_season_finale':
+  'enable': false
+  'back_color': '#08cc08'
+  'weight': 30
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_season_finale':
+  'font_color': '#08cc08'
+  'weight': 30
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'SEASON FINALE'
+
+'recent_days_final_episode': 14
+
+'collection_final_episode':
+  'collection_name': 'Final Episode'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Final Episode'
+
+'backdrop_final_episode':
+  'enable': false
+  'back_color': '#61BBFF'
+  'weight': 30
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_final_episode':
+  'font_color': '#61BBFF'
+  'weight': 30
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'FINAL EPISODE'
+
+'collection_returning':
+  'collection_name': 'Returning Shows'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Returning Shows'
+
+'backdrop_returning':
+  'enable': false
+  'back_color': '#000000'
+  'weight': 10
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_returning':
+  'font_color': '#d9d90b'
+  'weight': 10
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'R E T U R N I N G'
+
+'collection_ended':
+  'collection_name': 'Ended Shows'
+  'ignore_blank_results': 'true'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Ended Shows'
+
+'backdrop_ended':
+  'enable': false
+  'back_color': '#000000'
+  'weight': 10
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'TSSK_backdrop'
+
+'text_ended':
+  'font_color': '#1CA2FF'
+  'weight': 10
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'E N D E D'
+
+'collection_canceled':
+  'build_collection': false
+  'collection_name': 'Canceled Shows'
+  'ignore_blank_results': 'true'
+  'item_label': 'canceled_shows'
+  'non_item_remove_label': 'canceled_shows'
+  'smart_label': 'title.desc'
+  'sort_title': '+1_2Canceled Shows'
+  'summary': 'Canceled shows test'
+
+'backdrop_canceled':
+  'enable': false
+  'back_color': '#000000'
+  'weight': 10
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 20
+  'horizontal_align': 'center'
+  'vertical_align': 'bottom'
+  'group': 'TSSK_backdrop'
+
+'text_canceled':
+  'font_color': '#f71414'
+  'weight': 10
+  'font_size': 55
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'config/overlays/fonts/Avenir_95_Black.ttf'
+  'group': 'TSSK_text'
+  'use_text': 'C A N C E L E D'
+
+'edit_sort_titles': false
+
+'edit_sort_titles_new_season_soon': false
+
+'edit_sort_titles_upcoming_episode': false
+
+'edit_sort_titles_upcoming_finale': false
+
+'process_new_shows': true
+
+'process_new_season_soon': true
+
+'process_new_season_started': true
+
+'process_upcoming_episode': true
+
+'process_upcoming_finale': true
+
+'process_season_finale': true
+
+'process_final_episode': true
+
+'process_returning_shows': true
+
+'process_ended_shows': true
+
+'process_canceled_shows': true
+

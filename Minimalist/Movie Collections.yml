@@ -17,24 +17,57 @@ collections:
   4K Dolby Vision: #fiters only movies with 4K and Dolby Vision and places them in a collection 
     plex_all: true
     filters: 
-      has_dolby_vision: true
+      label: Dolby Vision
       resolution: 4k
-    sort_title: "!021_+4K Dolby Vision" #This places the collection in a specific order vs other collections based on the PMM collection section order 
-    collection_order: title.asc 
-    url_poster: https://theposterdb.com/api/assets/226933
-  IMAX:              #filters only movies with the edition tag IMAX, Imax-E, Extended IMAX
+    sort_title: "!021_+01 4K Dolby Vision"
+    collection_order: title.asc
+    file_poster: /config/Collection Posters/DV.png
+  Dolby Vision Profile 5:
+    plex_all: true
+    filters: 
+      label: Dolby Vision P5
+      resolution: 4k
+    sort_title: "!021_+05 Dolby Vision Profile 5"
+    collection_order: title.asc
+    file_poster: /config/Collection Posters/DV_P5.png
+  Dolby Vision FEL:
+    plex_all: true
+    filters: 
+      label: Dolby Vision P7 FEL
+      resolution: 4k
+    sort_title: "!021_+02 Dolby Vision FEL"
+    collection_order: title.asc
+    file_poster: /config/Collection Posters/DV_FEL.png
+  Dolby Vision MEL:
+    plex_all: true
+    filters: 
+      label: Dolby Vision P7 MEL
+      resolution: 4k
+    sort_title: "!021_+03 Dolby Vision MEL"
+    collection_order: title.asc
+    file_poster: /config/Collection Posters/DV_MEL.png
+  Dolby Vision Profile 8:
+    plex_all: true
+    filters: 
+      label: Dolby Vision P8
+      resolution: 4k
+    sort_title: "!021_+04 Dolby Vision Profile 8"
+    collection_order: title.asc
+    file_poster: /config/Collection Posters/DV_P8.png
+  IMAX:
     plex_search:
       any: 
         edition: 
           - Imax
           - Extended Imax
           - Imax-E
-    sort_title: "!021_+IMAX"         #This places the collection in a specific order vs other collections based on the PMM collection section order
+    sort_title: "!021_+06 IMAX"
     collection_order: title.asc
     url_poster: https://theposterdb.com/api/assets/224736
+  
 
 dynamic_collections:
   TMDb Collections:          # This name is the mapping name
     template: collection
     type: tmdb_collection
-    #remove_suffix: "Collection"  ### removes the word "Collection" from the title
+    #remove_suffix: "Collection"

@@ -1,0 +1,6 @@
+overlays:
+  gradient:
+    overlay:
+      name: gradient
+      file: config/overlays/images/gradient/gradient_bottom.png
+    plex_all: true

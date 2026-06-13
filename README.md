@@ -1,58 +1,168 @@
-![logo](https://github.com/mrbuckwheet/Kometa-Config/assets/124317277/5323ca07-03fd-479a-b93d-681172b96290)
+<div align="center">
+  <img src="https://github.com/mrbuckwheet/Kometa-Config/assets/124317277/5323ca07-03fd-479a-b93d-681172b96290" alt="Kometa Config Logo">
+  <h1>MrBuckwheet's Kometa Config</h1>
+</div>
 
-# Kometa Config 
-Extract ENTIRE repository directory. Place all contents of either the "Main" or "Minimalist" folder (only choose 1) into your ~~Plex Meta Manager~~ Kometa Config folder. The inside of your Kometa config folder should match what is inside the Main/Minimalist folder. All Folders and Files inside the Main/Minimalist folders are needed for either config to work. (fonts, icons and additiona .yml files, etc) 
-If you have not updated your image from Plex Meta Manager to Kometa yet (I recommend you do) you can still use the PMM version of this config [_HERE_](https://github.com/mrbuckwheet/Kometa-Config/releases/tag/PMM-Version) 
+## 🚀 Installation
 
-## NEW MINIMALIST LOOK 
-(based off of jmxd https://github.com/jmxd/Kometa - white overlays are replaced with colored ones and resolution numbers like 1080/720/480 are replaced with HD for a cleaner look. Scores are moved to the top left and all info/codecs are placed on the bottom with proper gradients. Score default is set to "mass_audience_rating_update: mdb_tmdb" and can be changed under the operations section in config.yml) 
+Extract the ENTIRE repository directory. Choose **Main**, **Minimalist**, or **Minimalist with UMTK** (only choose one) and place its contents into your Kometa config folder. 
 
-\*\*\* ***For the minimalist template to work correctly you MUST use the TRaSH naming convention for your file names*** \*\*\*
+1. Decide between the **Main**, **Minimalist**, or **Minimalist with UMTK** configuration.
+2. Place all contents of your chosen folder into your **Kometa Config** folder. 
+3. Ensure the inside of your Kometa config folder matches exactly what is inside your chosen folder.
 
-https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/#plex
+> 📁 **UMTK Configuration Note:** If you are using the **Minimalist with UMTK** configuration, a `UMTK Config` folder is included in this repository with all the necessary configuration files to set up UMTK. Copy the contents of the `UMTK Config` folder into your `/{Container_Folder_PATH}/UMTK`. You can use the provided Docker Compose setup below to run both Kometa and UMTK together.
 
-## Dynamic Collection Builder
-The dynamic collection builder in the Movie Collections.yml file will automatically make collections when 2 (this value can be customized) or more Movies from the same collection are in your library. 
+> ⚠️ **IMPORTANT:** You **MUST** create a `UMTK` folder in your `/{Media_Folder_Path}` for the **Coming Soon** feature to work, as placeholders are used for the missing movies in Plex.
 
-![Dynamic Collection Preview](</Overlay Preview/Dynamic Collection Preview.png>)
+For more details on UMTK and its features, please visit the [**NetPlexFlix/UMTK GitHub Repository**](https://github.com/NetPlexFlix/UMTK).
 
-\*\*\* ***It is recomment to disable "Minimum automatic collection size" under the advanced library settings. You can also run the "python kometa.py --delete-collections" command if you have previous collections from plex or manually added them before running Kometa to prevent collection duplicates or if you want a clean start*** \*\*\*
+> **Note:** All folders and files inside these directories (fonts, icons, additional `.yml` files, etc.) are needed for the configuration to work properly.
 
+---
 
-<br/><br/><br/>
-## <p align="center"> MINIMALIST
-#### <p align="center"> Movie Overlay Preview
-![Minimalist Movie Overlay](</Overlay Preview/Minimalist Movie Overlay.png>)
+## 🐳 Docker Compose (Kometa + UMTK)
 
+### Setting Up Environment Variables
+You must define the variables listed at the bottom of the Compose file. You have two recommended options:
+* **Option 1 (.env file):** Create a `.env` file in the same directory as your `docker-compose.yml` and add the variables there (e.g., `CONTAINER_FOLDER_PATH=/path/to/appdata`).
+* **Option 2 (Portainer):** If you are deploying via Portainer, you can paste these variables directly into the "Environment variables" section of the container stack editor.
 
-#### <p align="center"> TV Overlay Preview
-![Minimalist TV Overlay](</Overlay Preview/Minimalist TV Overlay.png>)
+```yaml
+services:
+  kometa:
+    image: kometateam/kometa:latest
+    container_name: kometa
+    user: ${USER_ID}:${GROUP_ID}
+    environment:
+      - TZ=${TIME_ZONE}
+      - KOMETA_TIMES=07:00,19:00
+    volumes:
+      - ${CONTAINER_FOLDER_PATH}/Kometa:/config
+    restart: unless-stopped
+    hostname: kometa
+    networks: 
+      - External
 
+  umtk:
+    image: netplexflix/umtk:latest
+    container_name: umtk
+    ports:
+      - "2120:2120" # Web UI
+    environment:
+      - CRON=0 2 * * * # Run daily at 2am (used as initial default only)
+      # - SCHEDULE_HOURS=24 # Alternative: run every X hours instead of a cron expression
+      - DOCKER=true
+      - TZ=${TIME_ZONE}
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    #extra_hosts:
+      #- "host.docker.internal:host-gateway" # Alternative way to access host
+    volumes:
+      # Configuration directory (required)
+      - ${CONTAINER_FOLDER_PATH}/UMTK:/app/config
 
-#### <p align="center"> Movie Collection Preview
+      # Video directory for placeholder method (optional - only needed if using method 2)
+      - ${MEDIA_FOLDER_PATH}/UMTK/Coming Soon:/video
 
-![Minimalist Movie Collection](</Overlay Preview/Minimalist Movie Collection.png>)
+      # Output directory for generated YAML files (required)
+      - ${CONTAINER_FOLDER_PATH}/Kometa/UMTK:/app/kometa
 
-#### <p align="center"> TV Collection Preview
+      # UMTK root folders
+      - ${MEDIA_FOLDER_PATH}/UMTK/Movies:/umtkmovies #example: /mnt/media/umtk/movies:/umtkmovies
+      - ${MEDIA_FOLDER_PATH}/UMTK/TV Shows:/umtktv #example: /mnt/media/umtk/tv:/umtktv
 
-![Minimalist TV Collection](</Overlay Preview/Minimalist TV Collection.png>)
+    restart: unless-stopped
+    hostname: umtk
+    networks: 
+      - External
 
+networks:
+  External:
+    external: true
 
-<br/><br/><br/>
-## <p align="center">ORIGINAL
-#### <p align="center">Movie Overlay Preview
-![Original Movies Overlay Preview](</Overlay Preview/Original Movies Overlay Preview.JPG>)
+#CONTAINER_FOLDER_PATH=
+#USER_ID=
+#GROUP_ID=
+#TIME_ZONE=
+#MEDIA_FOLDER_PATH=
+```
 
-#### <p align="center">TV Overlay Preview
-![Original TV Overlay Preview](</Overlay Preview/Original TV Overlay Preview.JPG>)
+---
 
-#### <p align="center">Movie Collection Preview
-![Original Movie Collection](</Overlay Preview/Original Movie Collection.JPG>)
+## ✨ Features
 
+### New Minimalist Look with UMTK/TSSK
+> ⚠️ **IMPORTANT:** For the minimalist templates to work correctly, you **MUST** use the [TRaSH naming convention](https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/#plex) for your file names.
 
+### Dolby Vision Profile Collections
+This config will automatically organize and create Dolby Vision collections categorized by their specific DV profiles. 
 
+To properly tag your media files with their respective Dolby Vision profiles so Kometa can read them, please check out my other repository utility: [**DolbyVision-Tagger**](https://github.com/mrbuckwheet/DolbyVision-Tagger).
 
-<!-- markdownlint-disable MD033 -->
+![Dolby Vision Collections](Overlay%20Preview/DV%20Collections.png)
+
+### Coming Soon Movies
+The UMTK integration automatically pulls in metadata for movies that haven't been released or added to your main server yet, populating them into a completely separate library. This gives your users a clean sneak peek at upcoming media without cluttering your primary collections. For the best experience, you can pin this dedicated library directly to the Plex home screen for easy discovery.
+
+![Coming Soon Preview](Overlay%20Preview/Coming%20Soon%20Preview.png)
+
+### TV Show Status Updates (UMTK/TSSK)
+Keep your TV Show library dynamically informed with essential production and broadcast milestones. This integration injects live status updates directly onto your series layouts, displaying next episode air dates, upcoming season premiere timelines, and season finale dates. It also tracks the network lifecycles of your shows, clearly detailing whether a series has been **Canceled**, **Ended**, or is **Returning** for another season.
+
+![Minimalist TV-UMTK-TSSK](Overlay%20Preview/Minimalist%20TV-UMTK-TSSK.png)
+
+### Pre-release Posters
+This config automatically identifies **CAM** and **Telesync (TS)** versions of newly released movies in your library. When detected, Kometa applies a dedicated **Pre-Release Version** poster design in Plex. This visually alerts your users right away so they can easily distinguish between temporary, lower-quality theater rips and final retail quality releases.
+
+![PreRelease Preview](Overlay%20Preview/PreRelease%20Preview.png)
+
+### Dynamic Collection Builder
+The dynamic collection builder in the `Movie Collections.yml` file will automatically make collections when 2 or more movies (this value can be customized) from the same collection are in your library. 
+
+![Dynamic Collection Preview](Overlay%20Preview/Dynamic%20Collection%20Preview.png)
+
+> 💡 **Recommendation:** It is recommended to disable "Minimum automatic collection size" under advanced library settings. You can also run the `python kometa.py --delete-collections` command if you have previous collections from Plex or manually added them before running Kometa. This prevents collection duplicates and gives you a clean start.
+
+---
+
+## 📸 Previews
+
+<h3 align="center">Minimalist Theme</h3>
+
+| Movie Overlay | TV Overlay | TV Overlays with UMTK |
+| :---: | :---: | :---: |
+| ![Minimalist Movie Overlay](Overlay%20Preview/Minimalist%20Movie%20Overlay.png) | ![Minimalist TV Overlay](Overlay%20Preview/Minimalist%20TV%20Overlay.png) | ![TV Overlays with UMTK](Overlay%20Preview/Minimalist%20TV-UMTK-TSSK.png) |
+
+<br/>
+
+<h3 align="center">Original Theme</h3>
+
+| Movie Overlay | TV Overlay |
+| :---: | :---: |
+| ![Original Movies Overlay Preview](Overlay%20Preview/Original%20Movies%20Overlay%20Preview.JPG) | ![Original TV Overlay Preview](Overlay%20Preview/Original%20TV%20Overlay%20Preview.JPG) |
+
+<br/>
+
+<h3 align="center">Collections</h3>
+
+| Movie Collections | TV Collection (Minimalist) |
+| :---: | :---: |
+| ![Movie Collections](Overlay%20Preview/Movie%20Collections.png) | ![Minimalist TV Collection](Overlay%20Preview/Minimalist%20TV%20Collection.png) |
+
+---
+
+## 👥 Credits & Acknowledgments
+
+This utility suite leverages the incredible work of the following open-source media tool developers and projects:
+
+* **[jmxd's Kometa config](https://github.com/jmxd/Kometa)**: The foundation for the New Minimalist Look (colored overlays, HD tags, top-left scores, bottom info/codecs).
+* **[Upcoming-Movies-TV-Shows-for-Kometa (UMTK)](https://github.com/netplexflix/Upcoming-Movies-TV-Shows-for-Kometa)**: Developed by **netplexflix**. Used to create 'Coming Soon' collection and overlay `.yml` files for Kometa to display content being downloaded within a set number of days by Radarr/Sonarr.
+
+---
+
 <p align="center">
-<a href="https://www.buymeacoffee.com/mrbuckwheet" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-black.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
-<!-- markdownlint-enable MD033 -->
+  <a href="https://www.buymeacoffee.com/mrbuckwheet" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/lato-black.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;">
+  </a>
+</p>

@@ -1,0 +1,373 @@
+################################################################################
+##########                         GENERAL:                           ##########
+################################################################################
+'enable_umtk': true
+
+'enable_tssk': true
+
+'movies': 2
+
+'tv': 0
+
+'method_fallback': true
+
+'preferred_language': 'original'
+
+'utc_offset': -5
+
+'debug': false
+
+'cleanup': true
+
+'simplify_next_week_dates': true
+
+'skip_channels':
+- 'Starlight Cinema'
+- 'fake trailers'
+- 'Black And White Media'
+- 'CircleX Creations'
+- 'New Movie Updates'
+
+################################################################################
+##########              INSTANCE OUTPUT MODE:                         ##########
+################################################################################
+'instance_output_mode': 'split'
+
+################################################################################
+##########                   RADARR INSTANCES:                        ##########
+################################################################################
+'radarr_instances':
+- 'api_key': 'XXXXXXXXXXXXXXXXXXXXX'
+  'exclude_tags': 'exclude, private'
+  'name': 'Radarr'
+  'timeout': 90
+  'umtk_root': '/umtkmovies'
+  'url': 'http://radarr:7878/movies'
+
+################################################################################
+##########                   SONARR INSTANCES:                        ##########
+################################################################################
+'sonarr_instances':
+- 'api_key': 'XXXXXXXXXXXXXXXXXXXXX'
+  'exclude_tags': 'exclude, private'
+  'name': 'Sonarr'
+  'timeout': 90
+  'umtk_root': '/umtktv'
+  'url': 'http://sonarr:8989/tv'
+
+################################################################################
+##########                    PLEX CONFIGURATION:                     ##########
+################################################################################
+'plex_url': 'http://plex:32400'
+
+'plex_token': 'XXXXXXXXXXXXXXXXXXXXX'
+
+'movie_libraries': 'Movies'
+
+'tv_libraries': 'TV Shows'
+
+'plex_library_scan': false
+
+'append_dates_to_sort_titles': false
+
+'add_rank_to_sort_title': false
+
+'edit_S00E00_episode_title': false
+
+'metadata_retry_limit': 4
+
+################################################################################
+##########                         MOVIES:                            ##########
+################################################################################
+'future_days_upcoming_movies': 30
+
+'past_days_upcoming_movies': 0
+
+'include_inCinemas': true
+
+'future_only': true
+
+################################################################################
+##########                         TV SHOWS:                          ##########
+################################################################################
+'future_days_upcoming_shows': 30
+
+'recent_days_new_show': 7
+
+'future_only_tv': false
+
+################################################################################
+##########                        TRENDING:                           ##########
+################################################################################
+'trending_movies': 0
+
+'trending_tv': 0
+
+'label_request_needed': true
+
+'mdblist_api_key': 'XXXXXXXXXXXXXXXXXXXXX'
+
+'mdblist_movies': 'https://mdblist.com/lists/netplexflix/umtk-trending-top20-movies'
+
+'mdblist_movies_limit': 10
+
+'mdblist_tv': 'https://mdblist.com/lists/netplexflix/umtk-trending-top20'
+
+'mdblist_tv_limit': 10
+
+'trending_root_movies': '/umtkmovies'
+
+'trending_root_tv': '/umtktv'
+
+################################################################################
+##########                UPCOMING MOVIES COLLECTION:                 ##########
+################################################################################
+'collection_upcoming_movies':
+  'build_collection': true
+  'sync_mode': 'append'
+  'collection_name': 'Coming Soon'
+  'file_poster': '/config/Collection Posters/coming_soon.png'
+  'item_label': 'Coming Soon'
+  'non_item_remove_label': 'Coming Soon'
+
+################################################################################
+##########              UPCOMING MOVIES OVERLAY FUTURE:               ##########
+################################################################################
+'backdrop_upcoming_movies_future':
+  'enable': true
+  'weight': 300
+  'file': 'config/overlays/edition/comingsoon.png'
+  'group': 'UMTK_backdrop'
+  'name': 'red_frame'
+
+'text_upcoming_movies_future':
+  'capitalize_dates': true
+  'font_color': '#FFFFFF'
+  'weight': 300
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 20
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'date_format': 'm/d'
+  'group': 'UMTK_text'
+  'use_text': 'EXPECTED'
+
+################################################################################
+##########             UPCOMING MOVIES OVERLAY RELEASED:              ##########
+################################################################################
+'backdrop_upcoming_movies_released':
+  'enable': true
+  'weight': 100
+  'file': 'config/overlays/edition/comingsoon.png'
+  'group': 'UMTK_backdrop'
+  'name': 'red_frame'
+
+'text_upcoming_movies_released':
+  'font_color': '#FFFFFF'
+  'weight': 100
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 20
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'UMTK_text'
+  'use_text': 'DOWNLOADING SOON'
+
+################################################################################
+##########                UPCOMING SHOWS COLLECTION:                  ##########
+################################################################################
+'collection_upcoming_shows':
+  'build_collection': false
+  'sync_mode': 'append'
+  'collection_name': 'ComingSoon'
+  'item_label': 'Coming Soon'
+  'non_item_remove_label': 'Coming Soon'
+
+################################################################################
+##########               UPCOMING SHOWS OVERLAY FUTURE:               ##########
+################################################################################
+'backdrop_upcoming_shows':
+  'enable': true
+  'weight': 100
+  'group': 'TSSK_backdrop'
+  'name': 'red_frame_bottom'
+  'url': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/UMTK/red_frame_thicker_bottom_full.png'
+
+'text_upcoming_shows':
+  'capitalize_dates': true
+  'font_color': '#FFFFFF'
+  'weight': 100
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 17
+  'horizontal_align': 'center'
+  'vertical_align': 'bottom'
+  'date_format': 'd mmm'
+  'group': 'TSSK_text'
+  'use_text': 'PREMIERES'
+
+################################################################################
+##########                UPCOMING SHOWS OVERLAY AIRED:               ##########
+################################################################################
+'backdrop_upcoming_shows_aired':
+  'enable': true
+  'weight': 100
+  'group': 'TSSK_backdrop'
+  'name': 'red_frame_bottom'
+  'url': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/UMTK/red_frame_thicker_bottom_full.png'
+
+'text_upcoming_shows_aired':
+  'font_color': '#FFFFFF'
+  'weight': 100
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 17
+  'horizontal_align': 'center'
+  'vertical_align': 'bottom'
+  'group': 'TSSK_text'
+  'use_text': 'COMING SOON'
+
+################################################################################
+##########                    NEW SHOW COLLECTION:                    ##########
+################################################################################
+'collection_new_show':
+  'build_collection': false
+  'sync_mode': 'append'
+  'collection_name': 'New Shows Premiered'
+  'item_label': 'NewShowsUMTK'
+  'non_item_remove_label': 'NewShowsUMTK'
+
+################################################################################
+##########                    NEW SHOWS OVERLAY:                      ##########
+################################################################################
+'backdrop_new_show':
+  'enable': true
+  'back_color': '#EB3233'
+  'weight': 50
+  'back_height': 90
+  'back_width': 950
+  'horizontal_offset': 0
+  'vertical_offset': 20
+  'horizontal_align': 'center'
+  'vertical_align': 'bottom'
+  'group': 'TSSK_backdrop'
+
+'text_new_show':
+  'font_color': '#FFFFFF'
+  'weight': 50
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 35
+  'horizontal_align': 'center'
+  'vertical_align': 'bottom'
+  'group': 'TSSK_text'
+  'use_text': 'RECENTLY ADDED'
+
+################################################################################
+##########                TRENDING MOVIES COLLECTION:                 ##########
+################################################################################
+'collection_trending_movies':
+  'build_collection': false
+  'sync_mode': 'append'
+  'collection_name': 'Trending Movies TOP 10'
+  'item_label': 'UMTKTrending'
+  'non_item_remove_label': 'UMTKTrending'
+
+################################################################################
+##########           TRENDING MOVIES OVERLAY REQUEST NEEDED:          ##########
+################################################################################
+'backdrop_trending_movies_request_needed':
+  'enable': true
+  'weight': 200
+  'group': 'UMTK_backdrop'
+  'name': 'red_frame'
+  'url': 'https://raw.githubusercontent.com/netplexflix/Upcoming-Movies-TV-Shows-for-Kometa/refs/heads/develop/config/overlays/purple_frame.png'
+
+'text_trending_movies_request_needed':
+  'font_color': '#FFFFFF'
+  'weight': 200
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'group': 'UMTK_text'
+  'use_text': 'REQUEST NEEDED'
+
+################################################################################
+##########                TRENDING SHOWS COLLECTION:                  ##########
+################################################################################
+'collection_trending_shows':
+  'build_collection': false
+  'sync_mode': 'append'
+  'collection_name': 'Trending Shows TOP 10'
+  'item_label': 'UMTKTrending'
+  'non_item_remove_label': 'UMTKTrending'
+
+################################################################################
+##########           TRENDING SHOWS OVERLAY REQUEST NEEDED:           ##########
+################################################################################
+'backdrop_trending_shows_request_needed':
+  'enable': true
+  'weight': 100
+  'group': 'TSSK_backdrop'
+  'name': 'red_frame_bottom'
+  'url': 'https://raw.githubusercontent.com/netplexflix/Upcoming-Movies-TV-Shows-for-Kometa/refs/heads/develop/config/overlays/purple_frame_bottom.png'
+
+'text_trending_shows_request_needed':
+  'font_color': '#FFFFFF'
+  'weight': 100
+  'font_size': 70
+  'horizontal_offset': 0
+  'vertical_offset': 10
+  'horizontal_align': 'center'
+  'vertical_align': 'bottom'
+  'group': 'TSSK_text'
+  'use_text': 'REQUEST NEEDED'
+
+################################################################################
+##########               TRENDING MOVIES TOP 10 OVERLAY:              ##########
+################################################################################
+'backdrop_trending_top_10_movies':
+  'enable': true
+  'weight': 2000
+  'group': 'TRENDING'
+  'name': 'top10'
+  'urldown': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/TSSK-Kabeb/Trending/trendingtop10TLshortdown.png'
+  'urlequal': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/TSSK-Kabeb/Trending/trendingtop10TLshortequal.png'
+  'urlup': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/TSSK-Kabeb/Trending/trendingtop10TLshortup.png'
+
+'text_trending_top_10_movies':
+  'font_color': '#dcb13d'
+  'stroke_color': '#ffffff'
+  'font_size': 80
+  'horizontal_offset': -430
+  'vertical_offset': 160
+  'stroke_width': 1
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'fonts/Roboto-Black.ttf'
+
+################################################################################
+##########              TRENDING SHOWS TOP 10 OVERLAY:                ##########
+################################################################################
+'backdrop_trending_top_10_tv':
+  'enable': true
+  'weight': 2000
+  'group': 'TRENDING'
+  'name': 'top10'
+  'urldown': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/TSSK-Kabeb/Trending/trendingtop10shortdown.png'
+  'urlequal': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/TSSK-Kabeb/Trending/trendingtop10shortequal.png'
+  'urlup': 'https://raw.githubusercontent.com/netplexflix/Overlays/refs/heads/main/TSSK-Kabeb/Trending/trendingtop10shortup.png'
+
+'text_trending_top_10_tv':
+  'font_color': '#dcb13d'
+  'stroke_color': '#ffffff'
+  'font_size': 80
+  'horizontal_offset': -407
+  'vertical_offset': 180
+  'stroke_width': 1
+  'horizontal_align': 'center'
+  'vertical_align': 'top'
+  'font': 'fonts/Roboto-Black.ttf'

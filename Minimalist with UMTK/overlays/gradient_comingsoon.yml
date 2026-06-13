@@ -1,0 +1,9 @@
+overlays:
+  gradient_comingsoon:
+    overlay:
+      weight: 50
+      name: gradient_top
+      file: config/overlays/images/gradient/gradient_top.png
+    plex_search:
+      any:
+        edition: coming soon
