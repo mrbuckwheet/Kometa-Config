@@ -11,22 +11,51 @@ Extract the ENTIRE repository directory. Choose **Main**, **Minimalist**, or **M
 2. Place all contents of your chosen folder into your **Kometa Config** folder. 
 3. Ensure the inside of your Kometa config folder matches exactly what is inside your chosen folder.
 
-> 📁 **UMTK Configuration Note:** If you are using the **Minimalist with UMTK** configuration, a `UMTK Config` folder is included in this repository with all the necessary configuration files to set up UMTK. Copy the contents of the `UMTK Config` folder into your `/{Container_Folder_PATH}/UMTK`. You can use the provided Docker Compose setup below to run both Kometa and UMTK together.
+> 📁 **UMTK Configuration Note:** If you are using the **Minimalist with UMTK** configuration, a `UMTK Config` folder is included in this repository with all the necessary configuration files to set up UMTK. Copy the contents of the `UMTK Config` folder into your `/{Container_Folder_PATH}/UMTK`.
+>
+> *⚠️You must add your Sonarr/Radarr API keys into the UMTK config.yml otherwise UMTK WILL NOT START⚠️*
+> 
+> You can use the provided Docker Compose setup below to run both Kometa and UMTK together.
 
 > ⚠️ **IMPORTANT:** You **MUST** create a `UMTK` folder in your `/{Media_Folder_Path}` for the **Coming Soon** feature to work, as placeholders are used for the missing movies in Plex.
 
-For more details on UMTK and its features, please visit the [**NetPlexFlix/UMTK GitHub Repository**](https://github.com/NetPlexFlix/UMTK).
+For more details on UMTK and its features, please visit the [**NetPlexFlix/UMTK GitHub Repository**](https://github.com/netplexflix/Upcoming-Movies-TV-Shows-for-Kometa).
 
 > **Note:** All folders and files inside these directories (fonts, icons, additional `.yml` files, etc.) are needed for the configuration to work properly.
 
+## Folder Directory Structure
+
+```text
+root/
+├── Container folder/
+│   ├── Kometa/
+│   │   ├── assets/                 # Custom asset files
+│   │   ├── Collection Posters/     # Artwork and posters for your collections
+│   │   ├── missing/                # Missing media assets or logs
+│   │   ├── overlays/               # Overlay configurations (e.g., resolution, audio tags)
+│   │   ├── UMTK/
+│   │   ├── config.yml              # Main Kometa configuration
+│   │   └── Movie Collections.yml   # Collection definitions
+│   ├── UMTK/
+│   │   ├── config.yml
+│   │   ├── localization.yml
+│   │   └── tssk_config.yml
+│   └── DV-Tagger/
+└── Path/to/Media/
+    ├── Movies/
+    ├── UMTK/
+    │   └── Coming Soon
+    │       └── UMTK.mkv            # Sample media file for Coming Soon
+    └── TV Shows/
+```
 ---
 
-## 🐳 Docker Compose (Kometa + UMTK)
+## 🐳 Docker Compose (Kometa + UMTK + DV-Tagger)
 
 ### Setting Up Environment Variables
 You must define the variables listed at the bottom of the Compose file. You have two recommended options:
-* **Option 1 (.env file):** Create a `.env` file in the same directory as your `docker-compose.yml` and add the variables there (e.g., `CONTAINER_FOLDER_PATH=/path/to/appdata`).
-* **Option 2 (Portainer):** If you are deploying via Portainer, you can paste these variables directly into the "Environment variables" section of the container stack editor.
+* **Option 1 (.env file):** Create a `.env` file in the same directory as your `docker-compose.yml` and add the variables listed at the bottom of the compose there (e.g., `CONTAINER_FOLDER_PATH=/path/to/appdata`).
+* **Option 2 (Portainer):** If you are deploying via Portainer, you can paste these variables directly into the "Environment variables" section of the stack editor.
 
 ```yaml
 services:
@@ -62,18 +91,35 @@ services:
       # Configuration directory (required)
       - ${CONTAINER_FOLDER_PATH}/UMTK:/app/config
 
-      # Video directory for placeholder method (optional - only needed if using method 2)
+      # Video directory for placeholder method
       - ${MEDIA_FOLDER_PATH}/UMTK/Coming Soon:/video
 
       # Output directory for generated YAML files (required)
       - ${CONTAINER_FOLDER_PATH}/Kometa/UMTK:/app/kometa
 
       # UMTK root folders
-      - ${MEDIA_FOLDER_PATH}/UMTK/Movies:/umtkmovies #example: /mnt/media/umtk/movies:/umtkmovies
-      - ${MEDIA_FOLDER_PATH}/UMTK/TV Shows:/umtktv #example: /mnt/media/umtk/tv:/umtktv
+      - ${MEDIA_FOLDER_PATH}/UMTK/Movies:/umtkmovies
+      - ${MEDIA_FOLDER_PATH}/UMTK/TV Shows:/umtktv
 
     restart: unless-stopped
     hostname: umtk
+    networks: 
+      - External
+      
+  dv-tagger:
+    image: mrbuckwheet/dolbyvision-tagger:latest
+    container_name: dolbyvision-tagger
+    ports:
+      - "3636:3636"
+    environment:
+      - TZ=${TZ}
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    volumes:
+      - ${MEDIA_FOLDER_PATH}/Movies:/Movies                           # Path to Movies Library
+      - ${CONTAINER_FOLDER_PATH}/DV-Tagger:/app/config                # Where your settings and logs will be saved
+    restart: unless-stopped
+    hostname: dv-tagger
     networks: 
       - External
 
@@ -81,13 +127,13 @@ networks:
   External:
     external: true
 
+#### ENV VARIABLES USED ####
 #CONTAINER_FOLDER_PATH=
 #USER_ID=
 #GROUP_ID=
 #TIME_ZONE=
 #MEDIA_FOLDER_PATH=
 ```
-
 ---
 
 ## ✨ Features
@@ -96,9 +142,9 @@ networks:
 > ⚠️ **IMPORTANT:** For the minimalist templates to work correctly, you **MUST** use the [TRaSH naming convention](https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/#plex) for your file names.
 
 ### Dolby Vision Profile Collections
-This config will automatically organize and create Dolby Vision collections categorized by their specific DV profiles. 
+This config will automatically organize and create Dolby Vision collections categorized by their specific DV profiles.
 
-To properly tag your media files with their respective Dolby Vision profiles so Kometa can read them, please check out my other repository utility: [**DolbyVision-Tagger**](https://github.com/mrbuckwheet/DolbyVision-Tagger).
+To properly tag your media files with their respective Dolby Vision profiles so Kometa can read them, run the DV-Tagger at least once. [**Instructions Here**](https://github.com/mrbuckwheet/DolbyVision-Tagger#-previews).
 
 ![Dolby Vision Collections](Overlay%20Preview/DV%20Collections.png)
 
@@ -106,6 +152,21 @@ To properly tag your media files with their respective Dolby Vision profiles so 
 The UMTK integration automatically pulls in metadata for movies that haven't been released or added to your main server yet, populating them into a completely separate library. This gives your users a clean sneak peek at upcoming media without cluttering your primary collections. For the best experience, you can pin this dedicated library directly to the Plex home screen for easy discovery.
 
 ![Coming Soon Preview](Overlay%20Preview/Coming%20Soon%20Preview.png)
+
+> ⚠️ **IMPORTANT:** Create a New Library in Plex > Point the folder directory to `/path/to/your/Media/UMTK/Movies`. When Kometa runs once you will see Movies have been added to the new `Coming Soon` library. There will be a new Collection as well that will show on the Home screen. Match the Recommendations as shown and update your library order on Plex's Home page by sorting your Pinned Libraries. e.g., If you want Coming Soon to show before your Movie Library's Recently Added/Recently Released, pin then reorder the Coming Soon library to the top. Make sure to share the Coming Soon library with people you have invited to your server if you want them to see it too. 
+
+<div align="center">
+  <table border="0">
+    <tr>
+      <td>
+        <img src="https://github.com/user-attachments/assets/b75e9910-c6f1-4bd4-a34f-b7d78558581c" height="300" alt="Screenshot 1">
+      </td>
+      <td>
+        <img src="https://github.com/user-attachments/assets/f1c26a75-8181-4693-82f6-ae672fdb8973" height="300" alt="Screenshot 2">
+      </td>
+    </tr>
+  </table>
+</div>
 
 ### TV Show Status Updates (UMTK/TSSK)
 Keep your TV Show library dynamically informed with essential production and broadcast milestones. This integration injects live status updates directly onto your series layouts, displaying next episode air dates, upcoming season premiere timelines, and season finale dates. It also tracks the network lifecycles of your shows, clearly detailing whether a series has been **Canceled**, **Ended**, or is **Returning** for another season.

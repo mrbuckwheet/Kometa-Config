@@ -135,8 +135,8 @@ libraries:                       # This is called out once within the config.yml
     - file: /config/overlays/audience_rating.yml
     
     # UMTK
-    - file: /config/UMTK/UMTK_MOVIES_UPCOMING_OVERLAYS.yml
-    
+
+
 ########## MOVIE OPERATIONS ##########
     
     operations:

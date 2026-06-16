@@ -31,18 +31,35 @@ services:
       # Configuration directory (required)
       - ${CONTAINER_FOLDER_PATH}/UMTK:/app/config
 
-      # Video directory for placeholder method (optional - only needed if using method 2)
+      # Video directory for placeholder method
       - ${MEDIA_FOLDER_PATH}/UMTK/Coming Soon:/video
 
       # Output directory for generated YAML files (required)
       - ${CONTAINER_FOLDER_PATH}/Kometa/UMTK:/app/kometa
 
       # UMTK root folders
-      - ${MEDIA_FOLDER_PATH}/UMTK/Movies:/umtkmovies #example: /mnt/media/umtk/movies:/umtkmovies
-      - ${MEDIA_FOLDER_PATH}/UMTK/TV Shows:/umtktv #example: /mnt/media/umtk/tv:/umtktv
+      - ${MEDIA_FOLDER_PATH}/UMTK/Movies:/umtkmovies
+      - ${MEDIA_FOLDER_PATH}/UMTK/TV Shows:/umtktv
 
     restart: unless-stopped
     hostname: umtk
+    networks: 
+      - External
+      
+  dv-tagger:
+    image: mrbuckwheet/dolbyvision-tagger:latest
+    container_name: dolbyvision-tagger
+    ports:
+      - "3636:3636"
+    environment:
+      - TZ=${TZ}
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    volumes:
+      - ${MEDIA_FOLDER_PATH}/Movies:/Movies                           # Path to Movies Library
+      - ${CONTAINER_FOLDER_PATH}/DV-Tagger:/app/config                # Where your settings and logs will be saved
+    restart: unless-stopped
+    hostname: dv-tagger
     networks: 
       - External
 
@@ -50,7 +67,7 @@ networks:
   External:
     external: true
 
-
+#### ENV VARIABLES USED ####
 #CONTAINER_FOLDER_PATH=
 #USER_ID=
 #GROUP_ID=

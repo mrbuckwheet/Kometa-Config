@@ -129,6 +129,8 @@
   'file_poster': '/config/Collection Posters/coming_soon.png'
   'item_label': 'Coming Soon'
   'non_item_remove_label': 'Coming Soon'
+  'visible_home': true
+  'visible_shared': true
 
 ################################################################################
 ##########              UPCOMING MOVIES OVERLAY FUTURE:               ##########
