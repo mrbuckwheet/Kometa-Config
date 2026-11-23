@@ -1,784 +1,785 @@
-## This is a personal config for Kometa. You can edit this file to your needs and be sure to fill in your personal keys 
+## This is a personal config for Kometa. You can edit this file to your needs and be sure to fill in your personal keys
 ## Overlays included for Movies in 4K, 1080p. Collections include IMDB, IMAX, DV, MCU, STar Wars. Star Trek, Harry Potter
 ## Overlays included for TV Shows in 4K. Collections inlude IMDB, Main Streaming Platforms and Major Networks.
 ##### Check your LIBRARY names in plex and copy them to the library names below. If your LIBRARY names are anything other than "Movies" and "TV Shows", change the names to match
 ##### ie. change the "Movies" to your movie library name and change "TV Shows" to your tv library name
 ## Fill in your plex IP under Settings Category along with plex token
-## This version includes Notifiarr settings and webhook 
+## This version includes Notifiarr settings and webhook
 ## TMDB and mdblist accounts are required for this scrypt to work. Fill in your apikeys where there are XXXXXXXXXXXXXXXXXXX
 
-libraries:                       # This is called out once within the config.yml file
-
-############################  
-########## MOVIES ##########
-############################ 
-  
-  Movies (4K):  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
-    report_path: config/missing/Movies_report.yml 
+libraries: # This is called out once within the config.yml file
+  ############################
+  ########## MOVIES ##########
+  ############################
+  Movies (4K): ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
+    report_path: config/missing/Movies_report.yml
     #reset_overlays: plex      # reset overlays to plex or tmdb
-    remove_overlays: false     # Set this to true to remove all overlays
+    remove_overlays: false # Set this to true to remove all overlays
     collection_files:
-    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - default: imdb                  # Creates IMDB Collections for Popular and Top 250
-      template_variables:
-        name_popular: IMDb Popular Movies    #Option to rename the default "IMDb Popular" to a custom name
-        use_lowest: false
-        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-        visible_home_popular: true    #run once to create list in home settings
-    - default: universe
-      template_variables:
-        use_separator: false
-          #append_data:     # this adds custom lists from imdb, trakt, or mdb
+      - default: basic # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+      - default: imdb # Creates IMDB Collections for Popular and Top 250
+        template_variables:
+          name_popular: IMDb Popular Movies #Option to rename the default "IMDb Popular" to a custom name
+          use_lowest: false
+          visible_home_top: true #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+          visible_home_popular: true #run once to create list in home settings
+      - default: universe
+        template_variables:
+          use_separator:
+            false
+            #append_data:     # this adds custom lists from imdb, trakt, or mdb
             #customnamehere: Title of my Custom List   # name of custom collection. You can abbreviate the "customnamehere" to anything you want ie austinpow, quenttara
-          #imdb_list_customnamehere: https://www.imdb.com/list/lsXXXXXXXXXXXXXXXX/   # link to imdb list. You can also use mdblist_list_<<key>>, or trakt_list_<<key>> of those website lists
-          #url_poster_customnamehere: https://www.website.com/jpg # poster url  
-        exclude:
-        - avp     #Alien / Predator
-        - arrow   #Arrowverse
-        - dca     #DC Animated Universe
-        - dcu     #DC Extended Universe
-        - fast    #Fast & Furious
-        - marvel  #In Association With Marvel
-        #- mcu     #Marvel Cinematic Universe
-        #- middle  #Middle Earth
-        - mummy   #The Mummy Universe
-        - rocky   #Rocky / Creed
-        #- trek   #Star Trek
-        #- star   #Star Wars Universe
-        - askew   #View Askewniverse
-        #- wizard #Wizarding World
-        - xmen    #X-Men Universe
-        #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
-    - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
+            #imdb_list_customnamehere: https://www.imdb.com/list/lsXXXXXXXXXXXXXXXX/   # link to imdb list. You can also use mdblist_list_<<key>>, or trakt_list_<<key>> of those website lists
+            #url_poster_customnamehere: https://www.website.com/jpg # poster url
+          exclude:
+            - avp #Alien / Predator
+            - arrow #Arrowverse
+            - dca #DC Animated Universe
+            - dcu #DC Extended Universe
+            - fast #Fast & Furious
+            - marvel #In Association With Marvel
+            - mcu #Marvel Cinematic Universe
+              #- middle  #Middle Earth
+            - mummy #The Mummy Universe
+            - rocky #Rocky / Creed
+            - trek #Star Trek
+              #- star   #Star Wars Universe
+            - askew #View Askewniverse
+              #- wizard #Wizarding World
+            - xmen #X-Men Universe
+              #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
+      - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
 
-########## MOVIE OVERLAYS ##########    
+    ########## MOVIE OVERLAYS ##########
     overlay_files:
-    #- default: ribbon
-    - file: config/overlays/gradient_movies.yml   #Movie Gradient
-    
-    ######## The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
-    - default: resolution   #Resolution & Dynamic Range  
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_720p: false
-        use_576p: false
-        use_480p: false
+      #- default: ribbon
+      - file:
+          config/overlays/gradient_movies.yml #Movie Gradient
+          ######## The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+      - default: resolution #Resolution & Dynamic Range
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_720p: false
+          use_576p: false
+          use_480p: false
 
-    - default: audio_codec   #Audio Codec
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
+      - default: audio_codec #Audio Codec
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
 
-    - default: resolution   #Edition
-      template_variables:
-        file: config/overlays/edition/<<key>>.png
-        use_resolution: false
-        use_edition: true
-        horizontal_offset: 0
-        horizontal_align: center
-        vertical_offset: 40
-        vertical_align: top
-        back_radius: 0
-        back_color: '#00000000'
-        back_height: 153
+      - default: resolution #Edition
+        template_variables:
+          file: config/overlays/edition/<<key>>.png
+          use_resolution: false
+          use_edition: true
+          horizontal_offset: 0
+          horizontal_align: center
+          vertical_offset: 40
+          vertical_align: top
+          back_radius: 0
+          back_color: "#00000000"
+          back_height: 153
 
-    - file: config/overlays/audience_rating.yml
-    
-########## MOVIE OPERATIONS ##########
-    
+      - file: config/overlays/audience_rating.yml
+
+    ########## MOVIE OPERATIONS ##########
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
       #mass_user_rating_update: mdb_imdb           #  Since the minimalist look does not use these scores they are optional. This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
       #mass_critic_rating_update: mdb_tomatoes     #  Since the minimalist look does not use these scores they are optional. This operation will update the critic rating in plex with rotten tomatoes ratings information
-      
       ################################################################################################################################################
-      ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
+      ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########
       ################################################################################################################################################
 
       #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
-      mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
+      mass_audience_rating_update: plex_tomatoes #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
 
-  Movies:  ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
-    report_path: config/missing/Movies_report.yml 
+  Movies: ################# THIS IS THE NAME OF YOUR "MOVIE" LIBRARY IN PLEX. IF YOUR MOVIE LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
+    report_path: config/missing/Movies_report.yml
     #reset_overlays: plex      # reset overlays to plex or tmdb
-    remove_overlays: false     # Set this to true to remove all overlays
+    remove_overlays: false # Set this to true to remove all overlays
     collection_files:
-    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - default: studio
-      template_variables:
-        include:
-        - A24
-        - Studio Ghibli
-    - default: imdb                  # Creates IMDB Collections for Popular and Top 250
-      template_variables:
-        name_popular: IMDb Popular Movies    #Option to rename the default "IMDb Popular" to a custom name
-        use_lowest: false
-        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-        visible_home_popular: true    #run once to create list in home settings
-    - default: universe
-      template_variables:
-        use_separator: false
-          #append_data:     # this adds custom lists from imdb, trakt, or mdb
+      - default: basic # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+      - default: studio
+        template_variables:
+          use_separator: false
+          include:
+            - A24
+            - Studio Ghibli
+      - default: imdb # Creates IMDB Collections for Popular and Top 250
+        template_variables:
+          name_popular: IMDb Popular Movies #Option to rename the default "IMDb Popular" to a custom name
+          use_lowest: false
+          visible_home_top: true #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+          visible_home_popular: true #run once to create list in home settings
+      - default: universe
+        template_variables:
+          use_separator:
+            false
+            #append_data:     # this adds custom lists from imdb, trakt, or mdb
             #customnamehere: Title of my Custom List   # name of custom collection. You can abbreviate the "customnamehere" to anything you want ie austinpow, quenttara
-          #imdb_list_customnamehere: https://www.imdb.com/list/lsXXXXXXXXXXXXXXXX/   # link to imdb list. You can also use mdblist_list_<<key>>, or trakt_list_<<key>> of those website lists
-          #url_poster_customnamehere: https://www.website.com/jpg # poster url
-        minimum_items: 2
-        delete_below_minimum: true
-        exclude:
-        - avp     #Alien / Predator
-        - arrow   #Arrowverse
-        - dca     #DC Animated Universe
-        - dcu     #DC Extended Universe
-        - fast    #Fast & Furious
-        #- marvel  #In Association With Marvel
-        #- mcu     #Marvel Cinematic Universe
-        #- middle  #Middle Earth
-        - mummy   #The Mummy Universe
-        - rocky   #Rocky / Creed
-        #- trek   #Star Trek
-        #- star   #Star Wars Universe
-        - askew   #View Askewniverse
-        #- wizard #Wizarding World
-        - xmen    #X-Men Universe
-        #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
-    - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
-    - file: config/Movies_Person_Collection.yml
+            #imdb_list_customnamehere: https://www.imdb.com/list/lsXXXXXXXXXXXXXXXX/   # link to imdb list. You can also use mdblist_list_<<key>>, or trakt_list_<<key>> of those website lists
+            #url_poster_customnamehere: https://www.website.com/jpg # poster url
+          minimum_items: 2
+          delete_below_minimum: true
+          exclude:
+            - avp #Alien / Predator
+            - arrow #Arrowverse
+            - dca #DC Animated Universe
+            - dcu #DC Extended Universe
+            - fast #Fast & Furious
+            - marvel #In Association With Marvel
+            - mcu #Marvel Cinematic Universe
+              #- middle  #Middle Earth
+            - mummy #The Mummy Universe
+            - rocky #Rocky / Creed
+            - trek #Star Trek
+              #- star   #Star Wars Universe
+            - askew #View Askewniverse
+            - wizard #Wizarding World
+            - xmen #X-Men Universe
+              #visible_home_customnamehere: true  #This will show a collection on home screen in Plex, this case its my custom list from above
+      - file: config/Movie Collections.yml #This pulls the "Movie Collections.yml" file and makes a custom Collections
+      - file: config/Movies_Person_Collection.yml
 
-########## MOVIE OVERLAYS ##########    
+    ########## MOVIE OVERLAYS ##########
     overlay_files:
-    #- default: ribbon
-    - file: config/overlays/gradient_movies.yml   #Movie Gradient
-    
-    ######## The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
-    - default: resolution   #Resolution & Dynamic Range  
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_720p: false
-        use_576p: false
-        use_480p: false
+      #- default: ribbon
+      - file:
+          config/overlays/gradient_movies.yml #Movie Gradient
+          ######## The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+      - default: resolution #Resolution & Dynamic Range
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_720p: false
+          use_576p: false
+          use_480p: false
 
-    - default: audio_codec   #Audio Codec
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
+      - default: audio_codec #Audio Codec
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
 
-    - default: resolution   #Edition
-      template_variables:
-        file: config/overlays/edition/<<key>>.png
-        use_resolution: false
-        use_edition: true
-        horizontal_offset: 0
-        horizontal_align: center
-        vertical_offset: 40
-        vertical_align: top
-        back_radius: 0
-        back_color: '#00000000'
-        back_height: 153
+      - default: resolution #Edition
+        template_variables:
+          file: config/overlays/edition/<<key>>.png
+          use_resolution: false
+          use_edition: true
+          horizontal_offset: 0
+          horizontal_align: center
+          vertical_offset: 40
+          vertical_align: top
+          back_radius: 0
+          back_color: "#00000000"
+          back_height: 153
 
-    - file: config/overlays/audience_rating.yml
-    
-########## MOVIE OPERATIONS ##########
-    
+      - file: config/overlays/audience_rating.yml
+
+    ########## MOVIE OPERATIONS ##########
     operations:
       #mass_poster_update: plex                   #  Resets posters to tmdb or plex
       #mass_user_rating_update: mdb_imdb           #  Since the minimalist look does not use these scores they are optional. This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
       #mass_critic_rating_update: mdb_tomatoes     #  Since the minimalist look does not use these scores they are optional. This operation will update the critic rating in plex with rotten tomatoes ratings information
-      
       ################################################################################################################################################
-      ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########  
+      ##########                                                MINIMALIST OVERLAY SCORE                                                    ##########
       ################################################################################################################################################
 
       #options for scores are listed at https://kometa.wiki/en/latest/config/operations/?h=ratings#mass-star-rating-update
-      mass_audience_rating_update: mdb_tmdb       #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
-##############################
-########## TV SHOWS ##########
-##############################
+      mass_audience_rating_update: plex_tomatoes #  This operation will update the audience rating which is used for the MINIMALIST OVERLAY in plex with TMDb ratings information
+  ##############################
+  ########## TV SHOWS ##########
+  ##############################
 
-  TV Shows (4K): ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
+  TV Shows (4K): ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/TV_report.yml
     #- reset_overlays: plex      #reset overlays to plex or tmdb
-    remove_overlays: false     # Set this to true to remove all overlays
+    remove_overlays: false # Set this to true to remove all overlays
     collection_files:
-    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - default: imdb                  # Creates IMDB Collections for Popular and Top 250 
-      template_variables:
-        name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
-        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-        visible_home_popular: true    #run once to create list in home settings
-    - default: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
-      template_variables:
-        use_separator: false
-        sync_mode: append
-        sep_style: stb
-          #name_format: <<key_name>> Shows
-        include:  ##Remove "#" infront of lines below to add network to Collections
-        - A&E
-        - ABC
-        - AMC
-        - Animal Planet
-        #- BBC
-        #- BET
-        #- Cartoon Network
-        #- Channel 4
-        #- Channel 5
-        #- CBC
-        - CBS
-        - Comedy Central
-        #- Discovery
-        #- Disney Channel
-        #- E!
-        #- ESPN
-        - Food Network
-        - FOX
-        #- Hallmark
-        #- HBO
-        #- HGTV
-        #- History
-        #- ITV
-        #- Lifetime
-        #- MTV
-        #- National Geographic
-        - NBC
-        - Nickelodeon
-        #- Paramount Network
-        #- PBS
-        - Showtime
-        #- Sky
-        - Starz
-        #- The CW
-        #- TLC
-        #- TNT
-        #- UKTV
-        - USA
-        #- YouTube
-    ####STREAMING NETWORKS#### This has moved to the Kometa Streaming section (do not enable if you have "-default: streaming" On since this Kometa config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
-        #- Apple TV+
-        #- Amazon
-        #- discovery+
-        #- Disney+
-        #- HBO Max
-        #- Hulu
-        #- Netflix
-        #- Paramount+
-        #- Peacock          
-        addons:  #these addons bundle additional network Collections under a main collection. 
-          Paramount+:     #main network
-          - Paramount Network      #network you want bundle under the "Paramoun+" collection
-          Peacock:        
-          - NBC
-          HBO Max:  
-          - HBO
-        sort_by: title.asc
-    - default: streaming # This will create collections for the following streaming services. 
-      template_variables:
-          #collection_section: "050"  #this setting will bundle the streaming collections with "-default: networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"  
-        use_separator: false
-        sep_style: stb
-        sync_mode: append
-        #visible_library_disney: true #enable if you want a specific streaming service to appear in your library tab.
-        #visible_home_disney: true    #enable if you want a specific streaming service to appear in your home tab.
-        #visible_shared_disney: true  #enable if you want a specific streaming service to appear in your friends home tab.
-        #sonarr_add_missing_hulu: true #adds all missing shows to sonarr. BE CAREFUL AS SOME SERVICES HAVE OVER 1000 SHOWS
-        name_format: <<key_name>>  #renames the collections for each streaming service to keep the title format for all collections the same. "Apple TV+ Shows" is renamed to "Apple TV+"  
-        #originals_only: true  #only show the streaming service's original content 
-        include:
-        - appletv
-        #- bet
-        #- britbox
-        #- crave
-        #- crunchyroll
-        - discovery
-        - disney
-        #- hayu
-        - max
-        - hulu
-        - netflix
-        #- now
-        - paramount
-        - peacock
-        - amazon
-        #- showtime
-        sort_by: title.asc 
-       
+      - default: basic # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+      - default: imdb # Creates IMDB Collections for Popular and Top 250
+        template_variables:
+          name_popular: IMDb Popular TV #Option to rename the default "IMDb Popular" to a custom name
+          visible_home_top: true #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+          visible_home_popular: true #run once to create list in home settings
+      - default: network # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
+        template_variables:
+          use_separator: false
+          sync_mode: append
+          sep_style:
+            stb
+            #name_format: <<key_name>> Shows
+          include: ##Remove "#" infront of lines below to add network to Collections
+            - A&E
+            - ABC
+            - AMC
+            - Animal Planet
+              #- BBC
+              #- BET
+              #- Cartoon Network
+              #- Channel 4
+              #- Channel 5
+              #- CBC
+            - CBS
+            - Comedy Central
+              #- Discovery
+              #- Disney Channel
+              #- E!
+              #- ESPN
+            - Food Network
+            - FOX
+              #- Hallmark
+              #- HBO
+              #- HGTV
+              #- History
+              #- ITV
+              #- Lifetime
+              #- MTV
+              #- National Geographic
+            - NBC
+            - Nickelodeon
+              #- Paramount Network
+              #- PBS
+            - Showtime
+              #- Sky
+            - Starz
+              #- The CW
+              #- TLC
+              #- TNT
+              #- UKTV
+            - USA
+              #- YouTube
+              ####STREAMING NETWORKS#### This has moved to the Kometa Streaming section (do not enable if you have "-default: streaming" On since this Kometa config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
+              #- Apple TV+
+              #- Amazon
+              #- discovery+
+              #- Disney+
+              #- HBO Max
+              #- Hulu
+              #- Netflix
+              #- Paramount+
+              #- Peacock
+          addons: #these addons bundle additional network Collections under a main collection.
+            Paramount+: #main network
+              - Paramount Network #network you want bundle under the "Paramoun+" collection
+            Peacock:
+              - NBC
+            HBO Max:
+              - HBO
+          sort_by: title.asc
+      - default: streaming # This will create collections for the following streaming services.
+        template_variables:
+          #collection_section: "050"  #this setting will bundle the streaming collections with "-default: networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"
+          use_separator: false
+          sep_style: stb
+          sync_mode:
+            append
+            #visible_library_disney: true #enable if you want a specific streaming service to appear in your library tab.
+            #visible_home_disney: true    #enable if you want a specific streaming service to appear in your home tab.
+            #visible_shared_disney: true  #enable if you want a specific streaming service to appear in your friends home tab.
+            #sonarr_add_missing_hulu: true #adds all missing shows to sonarr. BE CAREFUL AS SOME SERVICES HAVE OVER 1000 SHOWS
+          name_format:
+            <<key_name>> #renames the collections for each streaming service to keep the title format for all collections the same. "Apple TV+ Shows" is renamed to "Apple TV+"
+            #originals_only: true  #only show the streaming service's original content
+          include:
+            - appletv
+              #- bet
+            - britbox
+              #- crave
+              #- crunchyroll
+            - discovery
+            - disney
+              #- hayu
+            - max
+            - hulu
+            - netflix
+              #- now
+            - paramount
+            - peacock
+            - amazon
+              #- showtime
+          sort_by: title.asc
 
-########## TV SHOW OVERLAYS ##########
+    ########## TV SHOW OVERLAYS ##########
     overlay_files:
-    #- default: ribbon
+      #- default: ribbon
 
-# The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
-##########SHOWS##########    
-    - file: config/overlays/gradient_shows.yml    #Top Gradient
-    - default: resolution   # Resolution overlays at shows level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_1080p: false
-        use_720p: false
-        use_576p: false
-        use_480p: false
+      # The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+      ##########SHOWS##########
+      - file: config/overlays/gradient_shows.yml #Top Gradient
+      - default: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_1080p: false
+          use_720p: false
+          use_576p: false
+          use_480p: false
 
-    - default: audio_codec   # Audio codec overlays at shows level, Set the value to "true" if you want these formats on.
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_dtsx: false
-        use_plus_atmos: false
-        use_ma: false
-        use_hra: false
-        use_plus: false
-        use_dtses: false
-        use_dts: false
-        use_digital: false
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
+      - default: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on.
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_dtsx: false
+          use_plus_atmos: false
+          use_ma: false
+          use_hra: false
+          use_plus: false
+          use_dtses: false
+          use_dts: false
+          use_digital: false
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
 
-    - file: config/overlays/audience_rating.yml
+      - file:
+          config/overlays/audience_rating.yml
 
-##########SEASONS##########
-    - default: resolution   #Resolution overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_1080p: false
-        use_720p: false
-        use_576p: false
-        use_480p: false
-        builder_level: season
+          ##########SEASONS##########
+      - default: resolution #Resolution overlays at season level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_1080p: false
+          use_720p: false
+          use_576p: false
+          use_480p: false
+          builder_level: season
 
-    - default: audio_codec   #Audio codec overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_dtsx: false
-        use_plus_atmos: false
-        use_ma: false
-        use_hra: false
-        use_plus: false
-        use_dtses: false
-        use_dts: false
-        use_digital: false
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
-        builder_level: season
+      - default: audio_codec #Audio codec overlays at season level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_dtsx: false
+          use_plus_atmos: false
+          use_ma: false
+          use_hra: false
+          use_plus: false
+          use_dtses: false
+          use_dts: false
+          use_digital: false
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
+          builder_level:
+            season
 
-##########EPISODES##########
-    - default: resolution   #Resolution overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_1080p: false
-        use_720p: false
-        use_576p: false
-        use_480p: false
-        builder_level: episode
+            ##########EPISODES##########
+      - default: resolution #Resolution overlays at episode level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_1080p: false
+          use_720p: false
+          use_576p: false
+          use_480p: false
+          builder_level: episode
 
-    - default: audio_codec   #Audio codec overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_dtsx: false
-        use_plus_atmos: false
-        use_ma: false
-        use_hra: false
-        use_plus: false
-        use_dtses: false
-        use_dts: false
-        use_digital: false
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
-        builder_level: episode
-        
-########## TV SHOW OPERATIONS ##########
-        
+      - default: audio_codec #Audio codec overlays at episode level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_dtsx: false
+          use_plus_atmos: false
+          use_ma: false
+          use_hra: false
+          use_plus: false
+          use_dtses: false
+          use_dts: false
+          use_digital: false
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
+          builder_level: episode
+
+    ########## TV SHOW OPERATIONS ##########
     operations:
-      #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
-        #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
-        #managed: true
-        
+      #delete_collections: ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
+      #configured: false ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
+      #managed: true
+
       #mass_poster_update: plex                       #resets posters to tmdb or plex
-      mass_user_rating_update: mdb_imdb                  #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
-      mass_critic_rating_update: mdb_tomatoes            #  This operation will update the critic rating in plex with rotten tomatoes ratings information
-      mass_audience_rating_update: mdb_tmdb              #  This operation will update the audience rating in plex with TMDb ratings information
+      mass_user_rating_update: mdb_imdb #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
+      mass_critic_rating_update: mdb_tomatoes #  This operation will update the critic rating in plex with rotten tomatoes ratings information
+      mass_audience_rating_update: mdb_tomatoesaudience #  This operation will update the audience rating in plex with TMDb ratings information
       #mass_episode_critic_rating_update: mdb_imdb       # Update critic ratings with imdb for episodes not needed for tautilli
       #mass_episode_audience_rating_update: mdb_tmdb     # Update audience ratings with tmdb for episodes not needed for tautulli
-  
-  TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE. 
+  TV Shows: ########################### THIS IS THE NAME OF YOUR "TV SHOW" LIBRARY IN PLEX. IF YOUR TV LIBRARY IS NAMED DIFFERENTLY THEN COPY THAT NAME HERE.
     report_path: config/missing/TV_report.yml
     #- reset_overlays: plex      #reset overlays to plex or tmdb
-    remove_overlays: false     # Set this to true to remove all overlays
+    remove_overlays: false # Set this to true to remove all overlays
     collection_files:
-    - default: basic                 # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
-    - default: imdb                  # Creates IMDB Collections for Popular and Top 250 
-      template_variables:
-        name_popular: IMDb Popular TV    #Option to rename the default "IMDb Popular" to a custom name
-        visible_home_top: true    #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
-        visible_home_popular: true    #run once to create list in home settings
-    - default: network  # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
-      template_variables:
-        use_separator: false
-        sync_mode: append
-        sep_style: stb
-          #name_format: <<key_name>> Shows
-        include:  ##Remove "#" infront of lines below to add network to Collections
-        - A&E
-        - ABC
-        - Adult Swim
-        - AMC
-        - Animal Planet
-        #- BBC
-        #- BET
-        - Cartoon Network
-        #- Channel 4
-        #- Channel 5
-        #- CBC
-        - CBS
-        - Comedy Central
-        #- Discovery
-        #- Disney Channel
-        #- E!
-        #- ESPN
-        - Food Network
-        - FOX
-        #- Hallmark
-        #- HBO
-        #- HGTV
-        #- History
-        #- ITV
-        #- Lifetime
-        #- MTV
-        #- National Geographic
-        - NBC
-        - Nickelodeon
-        #- Paramount Network
-        #- PBS
-        - Showtime
-        #- Sky
-        - Starz
-        #- The CW
-        #- TLC
-        #- TNT
-        #- UKTV
-        - USA
-        #- YouTube
-    ####STREAMING NETWORKS#### This has moved to the Kometa Streaming section (do not enable if you have "-default: streaming" On since this Kometa config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
-        #- Apple TV+
-        #- Amazon
-        #- discovery+
-        #- Disney+
-        #- HBO Max
-        #- Hulu
-        #- Netflix
-        #- Paramount+
-        #- Peacock          
-        addons:  #these addons bundle additional network Collections under a main collection. 
-          Paramount+:     #main network
-          - Paramount Network      #network you want bundle under the "Paramoun+" collection
-          Peacock:        
-          - NBC
-          HBO Max:  
-          - HBO
-        sort_by: title.asc
-    - default: streaming # This will create collections for the following streaming services. 
-      template_variables:
-          #collection_section: "050"  #this setting will bundle the streaming collections with "-default: networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"  
-        use_separator: false
-        sep_style: stb
-        sync_mode: append
-        #visible_library_disney: true #enable if you want a specific streaming service to appear in your library tab.
-        #visible_home_disney: true    #enable if you want a specific streaming service to appear in your home tab.
-        #visible_shared_disney: true  #enable if you want a specific streaming service to appear in your friends home tab.
-        #sonarr_add_missing_hulu: true #adds all missing shows to sonarr. BE CAREFUL AS SOME SERVICES HAVE OVER 1000 SHOWS
-        name_format: <<key_name>>  #renames the collections for each streaming service to keep the title format for all collections the same. "Apple TV+ Shows" is renamed to "Apple TV+"  
-        #originals_only: true  #only show the streaming service's original content 
-        include:
-        - appletv
-        #- bet
-        #- britbox
-        #- crave
-        #- crunchyroll
-        - discovery
-        - disney
-        #- hayu
-        - max
-        - hulu
-        - netflix
-        #- now
-        - paramount
-        - peacock
-        - amazon
-        #- showtime
-        sort_by: title.asc 
-       
+      - default: basic # Creates Collections for New Episodes from last 7 days and Newly Released from past 90 days
+      - default: imdb # Creates IMDB Collections for Popular and Top 250
+        template_variables:
+          name_popular: IMDb Popular TV #Option to rename the default "IMDb Popular" to a custom name
+          visible_home_top: true #run once to create list to show when on the home screen, This is optional and can be turned off in Plex settings > Manage > Libaries > Manage Recommendations
+          visible_home_popular: true #run once to create list in home settings
+      - default: network # This will create collections for the following Networks. Note that the list has some networks marked excluded since we have Kometa streaming running also (Amazon, Netflix, Peacock etc)
+        template_variables:
+          use_separator: false
+          sync_mode: append
+          sep_style:
+            stb
+            #name_format: <<key_name>> Shows
+          include: ##Remove "#" infront of lines below to add network to Collections
+            - A&E
+            - ABC
+            - Adult Swim
+            - AMC
+            - Animal Planet
+              #- BBC
+              #- BET
+            - Cartoon Network
+              #- Channel 4
+              #- Channel 5
+              #- CBC
+            - CBS
+            - Comedy Central
+              #- Discovery
+              #- Disney Channel
+              #- E!
+              #- ESPN
+            - Food Network
+            - FOX
+              #- Hallmark
+              #- HBO
+              #- HGTV
+              #- History
+              #- ITV
+              #- Lifetime
+              #- MTV
+              #- National Geographic
+            - NBC
+            - Nickelodeon
+              #- Paramount Network
+              #- PBS
+            - Showtime
+              #- Sky
+            - Starz
+              #- The CW
+              #- TLC
+              #- TNT
+              #- UKTV
+            - USA
+              #- YouTube
+              ####STREAMING NETWORKS#### This has moved to the Kometa Streaming section (do not enable if you have "-default: streaming" On since this Kometa config removes the word "shows" in the collection title name during generation. it will cause collection errors and duplicates)
+              #- Apple TV+
+              #- Amazon
+              #- discovery+
+              #- Disney+
+              #- HBO Max
+              #- Hulu
+              #- Netflix
+              #- Paramount+
+              #- Peacock
+          addons: #these addons bundle additional network Collections under a main collection.
+            Paramount+: #main network
+              - Paramount Network #network you want bundle under the "Paramoun+" collection
+            Peacock:
+              - NBC
+            HBO Max:
+              - HBO
+          sort_by: title.asc
+      - default: streaming # This will create collections for the following streaming services.
+        template_variables:
+          #collection_section: "050"  #this setting will bundle the streaming collections with "-default: networks". left disabled, streaming services will appear before networks and everything will be listed alphabetically. default value is "030"
+          use_separator: false
+          sep_style: stb
+          sync_mode:
+            append
+            #visible_library_disney: true #enable if you want a specific streaming service to appear in your library tab.
+            #visible_home_disney: true    #enable if you want a specific streaming service to appear in your home tab.
+            #visible_shared_disney: true  #enable if you want a specific streaming service to appear in your friends home tab.
+            #sonarr_add_missing_hulu: true #adds all missing shows to sonarr. BE CAREFUL AS SOME SERVICES HAVE OVER 1000 SHOWS
+          name_format:
+            <<key_name>> #renames the collections for each streaming service to keep the title format for all collections the same. "Apple TV+ Shows" is renamed to "Apple TV+"
+            #originals_only: true  #only show the streaming service's original content
+          include:
+            - appletv
+              #- bet
+              #- britbox
+              #- crave
+              #- crunchyroll
+            - discovery
+            - disney
+              #- hayu
+            - max
+            - hulu
+            - netflix
+              #- now
+            - paramount
+            - peacock
+            - amazon
+              #- showtime
+          sort_by: title.asc
 
-########## TV SHOW OVERLAYS ##########
+    ########## TV SHOW OVERLAYS ##########
     overlay_files:
-    #- default: ribbon
+      #- default: ribbon
 
-# The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
-##########SHOWS##########    
-    - file: config/overlays/gradient_shows.yml    #Top Gradient
-    - default: resolution   # Resolution overlays at shows level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_1080p: true
-        use_720p: false
-        use_576p: false
-        use_480p: false
+      # The follwoing adjusts the position and layout of the minimalist look. Keep in mind that changing anything here is at your own risk and will potentially break or skew your posters ########
+      ##########SHOWS##########
+      - file: config/overlays/gradient_shows.yml #Top Gradient
+      - default: resolution # Resolution overlays at shows level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_1080p: true
+          use_720p: false
+          use_576p: false
+          use_480p: false
 
-    - default: audio_codec   # Audio codec overlays at shows level, Set the value to "true" if you want these formats on.
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_dtsx: false
-        use_plus_atmos: true
-        use_ma: false
-        use_hra: false
-        use_plus: true
-        use_dtses: false
-        use_dts: true
-        use_digital: true
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
+      - default: audio_codec # Audio codec overlays at shows level, Set the value to "true" if you want these formats on.
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_dtsx: false
+          use_plus_atmos: true
+          use_ma: false
+          use_hra: false
+          use_plus: true
+          use_dtses: false
+          use_dts: true
+          use_digital: true
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
 
-    - file: config/overlays/audience_rating.yml
+      - file:
+          config/overlays/audience_rating.yml
 
-##########SEASONS##########
-    - default: resolution   #Resolution overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_1080p: true
-        use_720p: false
-        use_576p: false
-        use_480p: false
-        builder_level: season
+          ##########SEASONS##########
+      - default: resolution #Resolution overlays at season level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_1080p: true
+          use_720p: false
+          use_576p: false
+          use_480p: false
+          builder_level: season
 
-    - default: audio_codec   #Audio codec overlays at season level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_dtsx: false
-        use_plus_atmos: true
-        use_ma: false
-        use_hra: false
-        use_plus: true
-        use_dtses: false
-        use_dts: true
-        use_digital: true
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
-        builder_level: season
+      - default: audio_codec #Audio codec overlays at season level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_dtsx: false
+          use_plus_atmos: true
+          use_ma: false
+          use_hra: false
+          use_plus: true
+          use_dtses: false
+          use_dts: true
+          use_digital: true
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
+          builder_level:
+            season
 
-##########EPISODES##########
-    - default: resolution   #Resolution overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/resolution/<<key>><<alt>>.png
-        use_resolution: true
-        use_edition: false
-        horizontal_offset: 50
-        horizontal_align: left
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: left
-        back_color: '#00000000'
-        back_height: 50
-        use_1080p: true
-        use_720p: false
-        use_576p: false
-        use_480p: false
-        builder_level: episode
+            ##########EPISODES##########
+      - default: resolution #Resolution overlays at episode level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+          use_1080p: true
+          use_720p: false
+          use_576p: false
+          use_480p: false
+          builder_level: episode
 
-    - default: audio_codec   #Audio codec overlays at episode level, Set the value to "true" if you want these formats on
-      template_variables:
-        file: config/overlays/audio_codec/<<key>>.png
-        horizontal_offset: 50
-        horizontal_align: right
-        vertical_offset: 50
-        vertical_align: bottom
-        back_radius: 0
-        back_align: right
-        back_color: '#00000000'
-        back_height: 50
-        use_dtsx: false
-        use_plus_atmos: true
-        use_ma: false
-        use_hra: false
-        use_plus: true
-        use_dtses: false
-        use_dts: true
-        use_digital: true
-        use_pcm: false
-        use_flac: false
-        use_opus: false
-        use_mp3: false
-        use_aac: false
-        builder_level: episode
-        
-########## TV SHOW OPERATIONS ##########
-        
+      - default: audio_codec #Audio codec overlays at episode level, Set the value to "true" if you want these formats on
+        template_variables:
+          file: config/overlays/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: bottom
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+          use_dtsx: false
+          use_plus_atmos: true
+          use_ma: false
+          use_hra: false
+          use_plus: true
+          use_dtses: false
+          use_dts: true
+          use_digital: true
+          use_pcm: false
+          use_flac: false
+          use_opus: false
+          use_mp3: false
+          use_aac: false
+          builder_level: episode
+
+    ########## TV SHOW OPERATIONS ##########
     operations:
-      #delete_collections:      ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
-        #configured: false      ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
-        #managed: true
-        
+      #delete_collections: ##### IF YOUR COLLECTIONS SHOW DUPLICATES OR YOU USED MY PREVIOUS CONFIGS RUN THIS ONCE AND THEN DISABLE FOR A FRESH COLLECTION START.
+      #configured: false ##### DO NOT MANUALLY DELETE THE COLLECTIONS BECAUSE THE "TAGS" Kometa ASSIGNS WILL STILL BE ATTACHED TO YOUR SHOWS
+      #managed: true
+
       #mass_poster_update: plex                       #resets posters to tmdb or plex
-      mass_user_rating_update: mdb_imdb                  #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
-      mass_critic_rating_update: mdb_tomatoes            #  This operation will update the critic rating in plex with rotten tomatoes ratings information
-      mass_audience_rating_update: mdb_tmdb              #  This operation will update the audience rating in plex with TMDb ratings information
+      mass_user_rating_update: mdb_imdb #  This operation will update the user rating in plex with imdb ratings information gathered through mdblist.com (mdblist config required)
+      mass_critic_rating_update: mdb_tomatoes #  This operation will update the critic rating in plex with rotten tomatoes ratings information
+      mass_audience_rating_update: mdb_tomatoesaudience #  This operation will update the audience rating in plex with TMDb ratings information
       #mass_episode_critic_rating_update: mdb_imdb       # Update critic ratings with imdb for episodes not needed for tautilli
       #mass_episode_audience_rating_update: mdb_tmdb     # Update audience ratings with tmdb for episodes not needed for tautulli
-           
 #####################################
 ########## KOMETA SETTINGS ##########
 #####################################
 
 settings:
-  run_order:                     # recommened run order keep operations first
-  - operations
-  - metadata
-  - collections
-  - overlays
+  run_order: # recommened run order keep operations first
+    - operations
+    - metadata
+    - collections
+    - overlays
   cache: true
   cache_expiration: 30
   asset_directory: config/assets
@@ -817,42 +818,43 @@ settings:
   custom_repo:
   overlay_artwork_filetype: jpg
   overlay_artwork_quality: 95
-#webhooks:                        # This is a webhook for notifiarr.  
+  #webhooks:                        # This is a webhook for notifiarr.
   #error: notifiarr
   #version: notifiarr
   #run_start: notifiarr
   #run_end: notifiarr
   #changes: notifiarr
   #delete: notifiarr
-plex:                            # Can be individually specified per library as well; REQUIRED for the script to run
-  url: http://192.168.86.222:32400    #fill in your IP address here ex 192.168.1.2 or 127.0.0.2 or whatever ip you use to access plex locally. 
-  token: bsx7SCM-5ukgjPZ4XeDL
+  show_unfiltered: false
+  auto_sort_hubs:
+plex: # Can be individually specified per library as well; REQUIRED for the script to run
+  url: http://192.168.1.222:32400 #fill in your IP address here ex 192.168.1.2 or 127.0.0.2 or whatever ip you use to access plex locally.
+  token: gaasRZvbYJp5prvCL4Eq
   timeout: 60
   clean_bundles: true
   empty_trash: true
   optimize: true
   db_cache: 1024
-  verify_ssl: 
+  verify_ssl:
 #notifiarr:
-  #apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
-tmdb:                            # REQUIRED for the script to run you need to create an account on tmdb.com https://kometa.wiki/en/latest/config/tmdb/
+#apikey: xxxxxxxxxxxxxxxxxxxxxxxxxx
+tmdb: # REQUIRED for the script to run you need to create an account on tmdb.com https://kometa.wiki/en/latest/config/tmdb/
   apikey: aa74c20c35b2cdbb4e9da312391ed7fc
   language: en
-  region: US                     # 	ISO 3166-1 Code of the User Region for use with Other TMDb Builders https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
+  region: US # 	ISO 3166-1 Code of the User Region for use with Other TMDb Builders https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
   cache_expiration: 60
-trakt:
-  client_id: 64f675869af83aa6e5855422ec3b3f867f1dd4cb5f4825d2c2de9a412ef6ee35
-  client_secret: 1750707210cf15c756923662ba6976a0f87f10af0eca22aaaed42d9568244fd8
-  authorization:
-    access_token: 66ba09b129d7106b909440428c218cb7d4a9d8f5f1a54a29c2c4638a1eb5e22c
-    token_type: Bearer
-    expires_in: 7889238
-    refresh_token: 089d445c1ffb03d4c1e6a8fa31a026ca0a10322b57be7e9d4e293897cb3c85b2
-    scope: public
-    created_at: 1738593227
-  pin: 9d5e2b0f
-mdblist:                         # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. https://kometa.wiki/en/latest/config/mdblist/
-  apikey: 2cvb2koctxja5lg3vn7lgmkp4              
+# trakt:
+#   client_id: 9381da0885073c35cff0b8ce02d03647ad6de4a18d7dabeab0aed03b3383a481
+#   client_secret: 6ab4f6b777944707ffd6dd72c165197e17fd5262b4e45131c412ec4f1a1aed4d
+#   authorization:
+#     access_token: lbdaHEoBXIIqojwvYqgYIaIjGzcJBIxe
+#     token_type: bearer
+#     expires_in: 604800
+#     refresh_token: JSzQlkDqaVvcOIkLTMFlugkCoRXXpoab
+#     scope: public offline_access
+#     created_at: 1784883633
+#   pin:
+#   force_refresh:
+mdblist: # REQUIRED for the script to run you need to create an account on mdblist.com, you can create an account with trakt and link it. https://kometa.wiki/en/latest/config/mdblist/
+  apikey: nritd8fkwqhrf0u1voq0u1hs4
   cache_expiration: 60
-
-  

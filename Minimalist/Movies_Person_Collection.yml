@@ -8,17 +8,9 @@ templates:
     sync_mode: sync
     collection_mode: default
     plex_search:
-      all: 
+      all:
         actor: tmdb
-  person:
-    optional:
-    - actor
-    - director
-    - producer
-    - writer
-    conditionals:
-      actor_search:    {conditions: [{actor: true, value: tmdb}]}
-      director_search: {conditions: [{director: true, value: tmdb}]}
+  director:
     tmdb_person: <<id>>
     name: <<mapping_name>> Collection
     collection_order: release.asc
@@ -27,10 +19,35 @@ templates:
     sync_mode: sync
     collection_mode: default
     plex_search:
-      any:
-        actor: <<actor_search>>
-        director: <<director_search>>
+      all:
+        director: tmdb
 
 collections:
   "Nicolas Cage":
-    template: {name: actor, id: 2963, poster: https://theposterdb.com/api/assets/516106}
+    template:
+      {
+        name: actor,
+        id: 2963,
+        poster: https://theposterdb.com/api/assets/516106,
+      }
+  "Wes Anderson":
+    template:
+      {
+        name: director,
+        id: 5655,
+        poster: https://theposterdb.com/api/assets/52040,
+      }
+  "Paul Thomas Anderson":
+    template:
+      {
+        name: director,
+        id: 4762,
+        poster: https://theposterdb.com/api/assets/508325,
+      }
+  "Yorgos Lanthimos":
+    template:
+      {
+        name: director,
+        id: 122423,
+        poster: https://theposterdb.com/api/assets/47483,
+      }
